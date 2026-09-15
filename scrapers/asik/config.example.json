@@ -1,0 +1,25 @@
+{
+  "base_url": "https://sehatindonesiaku.kemkes.go.id",
+  "target_path": "/ckg-pelayanan",
+  "login_path": "/login",
+  "headless": false,
+  "slow_mo": 100,
+  "timeout": 60000,
+  "max_pages": 500,
+  "output_dir": "output",
+  "screenshot_dir": "screenshots",
+  "credentials": {
+    "puskesmas_code": "",
+    "username": "",
+    "password": ""
+  },
+  "date": "",
+  "pelayanan_nakes_only": true,
+  "include_blank_forms": true,
+  "scrape_tatalaksana": true,
+  "filters": {},
+  "captcha_solver": {
+    "type": "manual",
+    "api_key": ""
+  }
+}

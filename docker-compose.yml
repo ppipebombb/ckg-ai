@@ -1,0 +1,200 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ckg}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD required}
+      POSTGRES_DB: ${POSTGRES_DB:-ckg}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - ckg_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ckg}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - ckg_redis_data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    image: ckg-backend:latest
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-ckg}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-ckg}
+      REDIS_URL: redis://redis:6379/0
+      SCRAPER_SESSIONS_ROOT: /data/scraper-sessions
+    volumes:
+      - ckg_scraper_sessions:/data/scraper-sessions
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    command: >
+      sh -c "alembic upgrade head &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4"
+
+  celery_worker:
+    image: ckg-backend:latest
+    # Chromium renderers use /dev/shm heavily. Docker's default is 64 MB, which
+    # a single browser survives but a tab pool / several concurrent contexts do
+    # not — renderers die with "Target closed", which reads like a flaky ASIK
+    # rather than an OOM. This is the worker that launches the scrape/sync
+    # browsers, so raise it here (postgres/redis are untouched).
+    shm_size: "2gb"
+    # Run tini as PID 1 so orphaned Chromium processes get REAPED.
+    #
+    # Without this, PID 1 in the container is the celery master, which never
+    # wait()s on grandchildren. Playwright's chrome-headless-shell spawns
+    # zygotes + renderers; when a scrape/sync subprocess ends they reparent to
+    # PID 1 and become permanent zombies. A zombie holds a PID slot forever
+    # while using no memory, so the container silently walks into its cgroup
+    # pids cap and then EVERY fork/thread fails with EAGAIN — surfacing as
+    # "can't start new thread" / "[Errno 11] Resource temporarily unavailable".
+    # Measured 2026-07-29: ~450 zombies/hour under a continuous backfill,
+    # 9,044 accumulated, worker wedged at pids 9378/9379.
+    init: true
+    # The cap that was hit is NOT configured anywhere — it is systemd's
+    # DefaultTasksMax=15% of kernel.threads-max (62529 * 0.15 = 9379), applied
+    # to every docker scope. tini above is the real fix; this is headroom so a
+    # future leak degrades slowly instead of wedging the worker.
+    pids_limit: 20000
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-ckg}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-ckg}
+      REDIS_URL: redis://redis:6379/0
+      SCRAPER_SESSIONS_ROOT: /data/scraper-sessions
+    volumes:
+      - ckg_scraper_sessions:/data/scraper-sessions
+    depends_on:
+      backend:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    command: ["celery", "-A", "app.celery_app.celery_app", "worker", "--loglevel=info", "--concurrency=4"]
+
+  # Loop-agent worker (PLAN §6). Consumes ONLY the `loop` queue at
+  # concurrency=1, fully isolated from the scrape/merge/sync worker above. It
+  # `docker run`s a throwaway ckg-loop-agent container per run, so it needs the
+  # host docker socket + the docker CLI (that's what worker.Dockerfile adds on
+  # top of ckg-backend). LOOP_HOST_REPO_PATH is the HOST path to this repo, which
+  # the loop task bind-mounts into each agent container as the seed tree.
+  #
+  # The feature stays inert until an is_active_loop_agent llm_config + a puskesmas
+  # with EPUS creds exist.
+  celery_worker_loop:
+    image: ckg-loop-worker:latest
+    build:
+      context: .
+      dockerfile: loop-agent/worker.Dockerfile
+    init: true
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-ckg}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-ckg}
+      REDIS_URL: redis://redis:6379/0
+      LOOP_AGENT_IMAGE: ckg-loop-agent:latest
+      LOOP_HOST_REPO_PATH: ${LOOP_HOST_REPO_PATH:?set to the absolute HOST path of this repo}
+      # Attach the throwaway loop container to this network so its in-container
+      # gate (verify_converter + the DB credential decrypt) can resolve postgres.
+      LOOP_AGENT_NETWORK: ${LOOP_AGENT_NETWORK:-ckg-ai_default}
+      # Prod: set LOOP_AGENT_DB_URL to a READ-ONLY role's URL. Unset → the loop
+      # container reuses this worker's DATABASE_URL (not read-only; fine locally).
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      backend:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    # LOOP_WORKER_CONCURRENCY dials how many loop runs execute in parallel.
+    # Each run launches a capped container (1.5 CPU / 1.5 GB) with Chromium —
+    # 2 fits the 4 vCPU / 7.9 GB box; go to 4 only with more RAM. Portals
+    # share one Cloudflare zone, so high concurrency raises bot-challenge risk.
+    command: ["celery", "-A", "app.celery_app.celery_app", "worker", "-Q", "loop", "--concurrency=${LOOP_WORKER_CONCURRENCY:-2}", "--loglevel=info"]
+
+  # Beat is a singleton scheduler. Do NOT scale this service to >1 replica or
+  # cron tasks will be dispatched twice every minute.
+  celery_beat:
+    image: ckg-backend:latest
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-ckg}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-ckg}
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      - ckg_celery_beat:/data/celery-beat
+    working_dir: /data/celery-beat
+    depends_on:
+      backend:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    deploy:
+      replicas: 1
+    command: ["celery", "-A", "app.celery_app.celery_app", "beat", "--loglevel=info", "--schedule=/data/celery-beat/schedule.db"]
+
+  frontend-internal:
+    image: ckg-frontend-internal:latest
+    build:
+      context: .
+      dockerfile: frontend-internal/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:?NEXT_PUBLIC_API_URL required}
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      backend:
+        condition: service_started
+    restart: unless-stopped
+
+  # External-team dashboard (reduced sidebar, separate /prod/auth login).
+  # Same backend; add its origin to backend CORS_ORIGINS.
+  frontend-dashboard:
+    image: ckg-frontend-dashboard:latest
+    build:
+      context: .
+      dockerfile: frontend-dashboard/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:?NEXT_PUBLIC_API_URL required}
+    ports:
+      - "127.0.0.1:3001:3000"
+    depends_on:
+      backend:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  ckg_pg_data:
+  ckg_redis_data:
+  ckg_scraper_sessions:
+  ckg_celery_beat:

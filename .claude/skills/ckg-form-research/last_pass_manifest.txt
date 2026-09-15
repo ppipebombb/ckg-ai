@@ -1,0 +1,412 @@
+==============================================================================
+CKG FULL RESEARCH PASS — DETERMINISTIC RUNNER
+source=epus  started=2026-06-05T12:23:45+00:00  repo=/Users/akbarakma/Documents/AJO/personal/juxtalabs/github/ckg-ai
+==============================================================================
+
+>>> STEP 1/5  audit_regions  (audit_regions.py --source epus)
+==============================================================================
+REGION INVENTORY  (source=epus)
+==============================================================================
+puskesmas                    region url                          rows  matched
+  Tebet                      jaksel.epuskesmas.id               86878     3147
+  Kota Tanggerang (Cipondoh) kotatangerang.epuskesmas.id        25171     1323
+  Pekayon Jaya               kotabekasi.epuskesmas.id           18936     2046
+
+==============================================================================
+1. SHAPE — tab names per region
+==============================================================================
+top-level keys common to all: ['ckg', 'data_pasien', 'pelayanan_id', 'penyakit_khusus', 'risiko_kehamilan', 'tabs']
+top-level keys that VARY: ['cppt', 'skrining_klaster']
+tabs common to all (30)
+tabs that VARY by region: ['Alkes', 'Kartu Bayi', 'MTBS', 'Pemantauan Anestesi & Bedah']
+   only in jaksel.epuskesmas.id: ['Alkes', 'MTBS']
+   only in kotatangerang.epuskesmas.id: ['Alkes', 'Pemantauan Anestesi & Bedah']
+   only in kotabekasi.epuskesmas.id: ['Kartu Bayi', 'MTBS', 'Pemantauan Anestesi & Bedah']
+
+data_pasien keys that VARY by region (likely renames — check the converter reads both):
+   only in jaksel.epuskesmas.id: ['ID Encounter Satu Sehat', 'ID Pelayanan', 'Jenis Kepesertaan BPJS', 'Nama', 'Nama KK', 'No. HP', 'Tanggal', 'Tempat & Tgl Lahir']
+
+converter-critical tabs (['Anamnesa', 'Diagnosa', 'Konseling HIV', 'PKPR', 'PTM', 'TB Paru']):
+   ✓ all present in every region
+
+==============================================================================
+2. EXTRACTION PARITY  (ages 18-59, n/region shown)
+==============================================================================
+region                             n avg forms  avg filled   ratio
+  jaksel.epuskesmas.id            40      25.2        18.6    88%
+  kotatangerang.epuskesmas.id     40      29.0        19.4    92%
+  kotabekasi.epuskesmas.id        40      29.8        21.1   100%
+
+forms whose avg fill differs > 2.0 across regions:
+   (none — converter fills consistently across regions)
+
+==============================================================================
+3. UNCOVERED high-fill source leaves PER REGION (mapping candidates)
+==============================================================================
+
+  --- jaksel.epuskesmas.id (n=40) ---
+     100%  Anamnesa > Keluhan Utama                                        'KUNJUNGAN SEHAT CKG'
+     100%  Anamnesa > Keluhan Tambahan / Anamnesa                          'tidak ada riwayat'
+     100%  Anamnesa > Lama Sakit > tahun                                   '0'
+     100%  Anamnesa > Lama Sakit > bulan                                   '0'
+     100%  Anamnesa > Lama Sakit > hari                                    '0'
+     100%  Periksa Fisik > Lingkar Perut                                   '91'
+     100%  Periksa Fisik > IMT                                             '25.78'
+     100%  Periksa Fisik > Hasil IMT                                       'LEBIH'
+
+  --- kotatangerang.epuskesmas.id (n=40) ---
+     100%  Anamnesa > Keluhan Utama                                        'nyeri punggung terasa tegang, nyer'
+     100%  Anamnesa > Lama Sakit > tahun                                   '0'
+     100%  Anamnesa > Lama Sakit > bulan                                   '0'
+     100%  Anamnesa > Lama Sakit > hari                                    '1'
+     100%  Periksa Fisik > Lingkar Perut                                   '90'
+     100%  Periksa Fisik > IMT                                             '28.48'
+     100%  Periksa Fisik > Hasil IMT                                       'LEBIH'
+     100%  Periksa Fisik > Detak Nadi                                      '86'
+
+  --- kotabekasi.epuskesmas.id (n=40) ---
+     100%  Anamnesa > Keluhan Utama                                        'Tidak ada keluhan'
+     100%  Anamnesa > Lama Sakit > tahun                                   '0'
+     100%  Anamnesa > Lama Sakit > bulan                                   '0'
+     100%  Anamnesa > Lama Sakit > hari                                    '0'
+     100%  Periksa Fisik > Lingkar Perut                                   '85'
+     100%  Periksa Fisik > IMT                                             '20.06'
+     100%  Periksa Fisik > Hasil IMT                                       'IDEAL'
+     100%  Periksa Fisik > Detak Nadi                                      '80'
+
+==============================================================================
+REGION AUDIT PASSED ✓  (3 regions, all within 80% extraction parity, all critical tabs present)
+[exit=0 -> RAN/OK]
+
+>>> STEP 2/5  verify_converter  (verify_converter.py --source epus --all-regions --n 6 --models oss)
+  config missing for openai/gpt-oss-20b — skipping that model
+
+--- region: jaksel.epuskesmas.id  (n=6) ---
+  3174016907250003 ATIKA WAHYULIANI     models=[] ok
+  3174016912960001 VERNANDA AMALIA PUTR models=[] ok
+  3174017009060002 LUBNA RAMADHANA      models=[] ok
+  3275043012230001 MUHAMMAD KAAFI ATHAR models=[] ok
+  7371141010930005 IKHWAN SETIAWAN      models=[] ok
+  3578097006980001 APHRODITA LUTHFANIA  models=[] ok
+
+--- region: kotatangerang.epuskesmas.id  (n=6) ---
+  3671014705360001 Z. SUKARNI SYOFIAN   models=[] ok
+  3671050308480004 CHAIRUDDIN           models=[] ok
+  3671055211720002 SITI MAESAROH        models=[] ok
+  3671056510060007 LOVELY LUNA HIDAYATI models=[] ok
+  3671056504450002 MUHANAYAH            models=[] ok
+  3671056907570001 LISTITIANI           models=[] ok
+
+--- region: kotabekasi.epuskesmas.id  (n=6) ---
+  3275045405470008 S MARISI ULI BR SITO models=[] ok
+  3275044207760017 SUKAESIH HUTAGALUNG  models=[] ok
+  3275044704610003 FRANCISCA OLIVIA JOH models=[] ok
+  3275040605530010 HARJADI              models=[] ok
+  3175060807861005 HENGKY FERNANDO      models=[] ok
+  3275046111660003 IRIN SETIOWATI BUSTA models=[] ok
+
+============================================================
+PER-REGION:
+  PASS ✓  jaksel.epuskesmas.id
+  PASS ✓  kotatangerang.epuskesmas.id
+  PASS ✓  kotabekasi.epuskesmas.id
+VERIFY PASSED ✓  (source=epus, regions tested=3)
+[exit=0 -> RAN/OK]
+
+>>> STEP 3/5  audit_coverage  (audit_coverage.py --source epus)
+========================================================================
+1. CONVERTER FORM NAMES vs CANONICAL  (source=epus, n=120)
+========================================================================
+
+========================================================================
+2. BREADCRUMB LABEL DRIFT (field label not in canonical form)
+========================================================================
+
+========================================================================
+3. CANONICAL ADULT FORMS NOT EMITTED BY CONVERTER
+========================================================================
+  [MISSING] 'Detail Abnormalitas - Skrining Jantung'  (layanan='Skrining Jantung (Pemeriksaan EKG - hanya penyandang HIPERTENSI)', in_audit=False, q=2, with_src=0)
+  [MISSING] 'Faktor Risiko HIV dan Sifilis'  (layanan='Faktor Risiko HIV & Sifilis', in_audit=False, q=12, with_src=0)
+  [MISSING] 'Pemeriksaan Gula Darah Lanjutan (GDP & GD 2 PP)'  (layanan='Skrining Laboratorium =>40 thn Laki-laki Gula Darah, Fungsi Ginjal, Hati, Profil Lipid', in_audit=False, q=2, with_src=0)
+  [MISSING] 'Pemeriksaan Gula Darah Lanjutan (HbA1C)'  (layanan='Skrining Laboratorium =>40 thn Laki-laki Gula Darah, Fungsi Ginjal, Hati, Profil Lipid', in_audit=False, q=1, with_src=0)
+  [MISSING] 'Pemeriksaan Inspekulo dan IVA'  (layanan='Skrining Kanker Leher Rahim', in_audit=True, q=2, with_src=2)
+  [MISSING] 'Pemeriksaan Sputum - Tuberkulosis'  (layanan='Pemeriksaan Tuberkulosis', in_audit=False, q=5, with_src=0)
+  [MISSING] 'Pemeriksaan Tekanan Darah'  (layanan='Skrining Gizi, Tekanan Darah, dan Gula Darah Laki-laki => 40 Tahun', in_audit=False, q=7, with_src=0)
+  [MISSING] 'Prediksi Risiko Jantung dan Stroke'  (layanan='Prediksi Risiko Jantung dan Stroke', in_audit=False, q=1, with_src=0)
+  [MISSING] 'Riwayat Hipertensi & Diabetes'  (layanan='Riwayat Hipertensi & Diabetes', in_audit=False, q=3, with_src=0)
+  [MISSING] 'Skrining AIDS (hanya untuk HIV positif)'  (layanan='Skrining AIDS', in_audit=False, q=1, with_src=0)
+  [MISSING] 'Skrining Kanker Payudara'  (layanan='Skrining Kanker Payudara', in_audit=True, q=3, with_src=2)
+  [MISSING] 'Tingkat Aktivitas Fisik'  (layanan='Tingkat Aktivitas Fisik', in_audit=False, q=4, with_src=0)
+  [MISSING] 'Tuberkulosis'  (layanan='Tuberkulosis Dewasa & Lansia', in_audit=False, q=3, with_src=0)
+
+========================================================================
+4. PER EMITTED FORM: coverage tally
+========================================================================
+  Demografi Dewasa Laki-Laki                              covered 2/3
+  Demografi Dewasa Perempuan                              covered 3/4
+  Demografi Lansia                                        covered 2/2
+  Faktor Risiko Kanker Usus                               covered 2/5
+  Faktor Risiko TB - Dewasa & Lansia                      covered 1/1
+  Faktor Risiko dan Skrining X-Ray TB (Anak 1-9 tahun)    covered 1/6
+  Faktor Risiko dan Skrining X-Ray TB (Dewasa & Lansia)   covered 1/18
+  Gizi (BB - TB - Lingkar Perut) Laki-laki                covered 3/4
+  Gizi (BB - TB - Lingkar Perut) Perempuan                covered 3/4
+  Gizi Anak Sekolah                                       covered 2/2
+  Hasil Pemeriksaan - Skrining Jantung                    covered 1/2
+  Hasil Pemeriksaan HPV-DNA                               covered 0/5
+  Hati                                                    covered 0/12
+  Kanker Leher Rahim                                      covered 0/1
+  Kesehatan Jiwa                                          covered 4/6
+  Mobilisasi - Pemeriksaan Lanjutan (SPPB)                covered 0/10
+  POCT Lipid Panel (Khusus usia >=40 thn dan penyandang H covered 4/6
+  Pemeriksaan Calon Pengantin Perempuan                   covered 1/1
+  Pemeriksaan Fibrosis/Sirosis Hati                       covered 2/3
+  Pemeriksaan Gangguan Fungsional/Barthel Index - Lansia  covered 10/11
+  Pemeriksaan Gejala Depresi - Pemeriksaan Lanjutan       covered 0/6
+  Pemeriksaan Gigi - Anak                                 covered 1/1
+  Pemeriksaan Gula Darah Anak                             covered 2/4
+  Pemeriksaan Gula Darah Dewasa Lansia                    covered 6/9
+  Pemeriksaan Gula Darah Remaja                           covered 2/5
+  Pemeriksaan HIV                                         covered 1/5
+  Pemeriksaan Hepatitis                                   covered 2/3
+  Pemeriksaan Kadar CO (Hanya Diisi Apabila Merokok atau  covered 1/1
+  Pemeriksaan Lanjutan Kanker Usus                        covered 0/3
+  Pemeriksaan PPOK (Skrining PUMA)                        covered 6/8
+  Pemeriksaan Penyakit Frambusia (untuk daerah endemis at covered 0/2
+  Pemeriksaan Penyakit Kusta                              covered 0/3
+  Pemeriksaan Penyakit Skabies                            covered 0/1
+  Pemeriksaan Sifilis                                     covered 1/1
+  Pemeriksaan Tuberkulosis (Dewasa & Lansia)              covered 2/8
+  Penapisan Risiko Kanker Paru                            covered 5/7
+  Penurunan Kognitif - Tindak Lanjut (AD-8 INA)           covered 0/16
+  Penurunan Kognitif - Tindak Lanjut (Mini Cog-Clock Draw covered 0/4
+  Perilaku Merokok                                        covered 1/9
+  Riwayat Imunisasi Tetanus(Status T) - Hanya untuk Catin covered 0/1
+  SKILAS Malnutrisi                                       covered 3/6
+  SKILAS Mobilisasi - Lansia                              covered 1/1
+  SKILAS Pemeriksaan Gejala Depresi - Lansia              covered 2/3
+  SKILAS Penurunan Kognitif - Lansia                      covered 3/4
+  Skrining Fungsi Ginjal Laki-Laki (hanya untuk =>40 tahu covered 4/4
+  Skrining Fungsi Ginjal Perempuan (hanya untuk =>40 tahu covered 4/7
+  Skrining Kanker Paru (Usia =>45 thn)                    covered 4/11
+  Skrining Karies dan Gigi Hilang                         covered 2/2
+  Skrining Kerusakan Ginjal (hanya untuk =>40 tahun denga covered 1/3
+  Skrining Malnutrisi - Pemeriksaan Lanjutan (MNA-SF)     covered 0/14
+  Skrining Penyakit Periodontal                           covered 2/2
+  Skrining Pertumbuhan - Balita dan Anak Prasekolah 1-5 T covered 3/7
+  Skrining Pertumbuhan - Balita dan Anak Prasekolah 5-6 T covered 1/3
+  Skrining Telinga dan Mata (18-39 tahun)                 covered 4/9
+  Skrining Telinga dan Mata (=>40 tahun)                  covered 5/10
+  Tekanan Darah Anak dan Remaja                           covered 2/2
+  Tekanan Darah Dewasa Lansia                             covered 6/9
+  Tingkat Aktivitas Fisik (sedang dan berat)              covered 2/10
+
+========================================================================
+NAME/LABEL DRIFT ISSUES: 0  (target = 0 before shipping)
+[exit=0 -> RAN/OK]
+
+>>> STEP 4/5  audit_uncovered  (audit_uncovered.py --source epus)
+=== EPUS uncovered source fields  (80 matched patients) ===
+populated leaf paths: 1378 | consumed: 70 | uncovered: 1308 | candidates (noise filtered): 1089
+
+fill%  path  ::  sample
+  100%  Anamnesa > Keluhan Utama                                                    'KUNJUNGAN SEHAT'
+  100%  Anamnesa > Lama Sakit > tahun                                               '0'
+  100%  Anamnesa > Lama Sakit > bulan                                               '0'
+  100%  Anamnesa > Lama Sakit > hari                                                '0'
+  100%  Lainnya > Konsumsi Alkohol                                                  'Tidak'
+  100%  Lainnya > Kurang Sayur/Buah                                                 'Tidak'
+   99%  Periksa Fisik > Lingkar Perut                                               '76'
+   99%  Periksa Fisik > IMT                                                         '21.99'
+   99%  Periksa Fisik > Hasil IMT                                                   'IDEAL'
+   99%  Periksa Fisik > Detak Nadi                                                  '78'
+   99%  Periksa Fisik > Nafas                                                       '21'
+   94%  Keadaan Fisik > Pemeriksaan Kulit > Inspeksi                                'Normal : kulit tidak ada ikterik/pucat/siano'
+   94%  Keadaan Fisik > Pemeriksaan Kulit > Palpasi                                 'Normal : lembab, turgor baik/elastic, tidak '
+   94%  Keadaan Fisik > Pemeriksaan Mata                                            'Normal : simetris mata kika, simetris bola m'
+   94%  Keadaan Fisik > Pemeriksaan Telinga > Inspeksi                              'Normal : bentuk dan posisi simetris kika, in'
+   94%  Keadaan Fisik > Pemeriksaan Telinga > Palpasi                               'Normal : tidak ada nyeri tekan'
+   94%  Keadaan Fisik > Pemeriksaan Mulut dan Bibir > Inspeksi dan Palpasi Struktu  'Normal : warna mukosa mulut dan bibir pink, '
+   94%  Keadaan Fisik > Pemeriksaan Mulut dan Bibir > Inspeksi dan Palpasi Strukur  'Normal : gigi lengkap, tidak ada tanda-tanda'
+   89%  Riwayat PTM pada Diri Sendiri > Penyakit Jantung                            'Tidak'
+   89%  Riwayat PTM pada Diri Sendiri > Penyakit Stroke                             'Tidak'
+   89%  Riwayat PTM pada Diri Sendiri > Penyakit Asma                               'Tidak'
+   89%  Riwayat PTM pada Diri Sendiri > Kolesterol Tinggi                           'Tidak'
+   89%  Riwayat PTM pada Keluarga > Penyakit Jantung                                'Tidak'
+   89%  Riwayat PTM pada Keluarga > Penyakit Stroke                                 'Tidak'
+   89%  Riwayat PTM pada Keluarga > Penyakit Asma                                   'Tidak'
+   89%  Riwayat PTM pada Keluarga > Kolesterol Tinggi                               'Tidak'
+   89%  Riwayat PTM pada Keluarga > Benjolan Payudara                               'Tidak'
+   89%  Faktor Risiko > Gula Berlebihan                                             'Tidak'
+   89%  Faktor Risiko > Garam Berlebihan                                            'Tidak'
+   89%  Faktor Risiko > Lemak Berlebihan                                            'Tidak'
+   89%  Faktor Risiko > Kurang Makan Buah dan Sayur                                 'Tidak (≥ 5 porsi per hari)'
+   89%  Faktor Risiko > Konsumsi Alkohol                                            'Tidak'
+   89%  Pemeriksaan > Rujuk RS                                                      'Tidak'
+   89%  Pemeriksaan > Terapi Farmakologi                                            'Tidak Diberikan Obat'
+   89%  Pemeriksaan > Konseling, Informasi dan Edukasi Kesehatan                    'Tidak'
+   88%  Tekanan Darah & IMT > IMT                                                   '21.99'
+   88%  Tekanan Darah & IMT > Hasil IMT                                             'IDEAL'
+   88%  Pemeriksaan > Lingkar Perut                                                 '76'
+   81%  PTM > Buat Baru Skrining PTM > No                                           'Data tidak ditemukan'
+   76%  Periksa Fisik > Suhu                                                        '36.8'
+   74%  Anamnesa > Keluhan Tambahan / Anamnesa                                      'KUNJUNGAN SEHAT'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Alasan Tes (Boleh  'False'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Alasan Tes (Boleh  'False'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Alasan Tes (Boleh  'False'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Alasan Tes (Boleh  'False'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Alasan Tes (Boleh  'False'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Alasan Tes (Boleh  'False'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Alasan Tes (Boleh  'False'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Alasan Tes (Boleh  'True'
+   72%  Konseling Pra Tes Isikan bila dilakukan konseling(KTS) > Anal Seks Berisik  'T'
+   70%  Buat Baru PKPR > 3. Remaja Hamil                                            'Tidak'
+   70%  Buat Baru PKPR > 6. Gangguan Gizi                                           'Tidak'
+   70%  Buat Baru PKPR > 7. NAPZA                                                   'Tidak'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 01:DTV         'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 02:DTS         'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 03:Nyeri Peru  'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 04:Lecet       'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 05:Bintil Sak  'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 06:Luka/Ulkus  'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 07:Jengger     'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 08:Bubo        'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 09:Nyeri Goya  'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 10:DTU         'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 11:Pembengkak  'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 12:DTA         'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 13:DTM         'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 98:Mestruasi   'False'
+   68%  Periksa Fisik > Tanda Klinis (Boleh diisi lebih dari satu) > 99:Tidak Ada   'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 01:DTV            'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 06:Ulkus Genital  'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 07:Tumbuhan Geni  'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 08:Bubo Inguinal  'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 09:Penyakit Rada  'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 10:DTU            'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 11:Pembengkakan   'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 12:DTA            'False'
+   68%  Periksa Fisik > Diagnosis (Boleh diisi lebih dari satu) > 13:Konjungtiviti  'False'
+   68%  data_pasien > No Telp / HP                                                  '082134617300'
+   66%  Riwayat Identitas > Status Kawin Client > status_kawin                      'JANDA'
+   66%  Riwayat Identitas > Status Kawin Suami > status_kawin_suami                 'MENIKAH KE-'
+   66%  Riwayat Identitas > Dari siapa anda mendengar pelayanan ini ? > info_pelay  'LAINNYA'
+   66%  Riwayat Kanker Dalam Keluarga > Kanker apa > kanker_apa                     'KANKER'
+   65%  Buat Baru Konseling HIV > Status Rujukan                                    'SENDIRI'
+   62%  Buat Baru PKPR > Pekerjaan > pekerjaan_id                                   '12'
+   62%  Buat Baru PKPR > Pekerjaan > pekerjaan_nama                                 'KARYAWAN SWASTA'
+   60%  Buat Baru PKPR > Status Perkawinan                                          'Belum Menikah'
+   59%  Anamnesa > Data Skrining > Skrining                                         'TBC'
+   59%  Anamnesa > Data Skrining > Tanggal                                          '2026-05-07'
+   59%  Diagnosa > Data Skrining > Skrining                                         'TBC'
+   59%  Diagnosa > Data Skrining > Tanggal                                          '2026-05-07'
+
+Heuristic: 'consumed' = leaf name present in EPUS_BREADCRUMBS. Eyeball candidates for a real ASIK target.
+[exit=0 -> RAN/INFO]
+
+>>> STEP 5/5  live ASIK drift  (capture_target.py)
+--- auto-asik: FRESH live scrape (Branch B captcha, headless) ---
+[captcha_config apply] exit=0
+Captcha vision candidates (priority order):
+    [      DOWN]  captcha-only (is_active_captcha)
+               'ocr.juxtalabs.io qwen3.6-27b (CAPTCHA ONLY)'  @ https://ocr.juxtalabs.io/v1
+  → [      LIVE]  gpt-4o (OpenAI, paid)
+               "GPT 4o - Andrew's Key (FOR CAPTHA ONLY)"  @ https://api.openai.com/v1
+    [not-probed]  gpt-4o (OpenAI, paid)
+               "GPT 4o Mini - Andrew's Key"  @ https://api.openai.com/v1
+Patched /Users/akbarakma/Documents/AJO/personal/juxtalabs/github/ckg-ai/scrapers/asik/config.json -> captcha_solver.type = 'llm'
+  using : "GPT 4o - Andrew's Key (FOR CAPTHA ONLY)"  [gpt-4o (OpenAI, paid)]
+  model : gpt-4o  @ https://api.openai.com/v1
+  The scraper now auto-solves the captcha via this vision endpoint —
+  no agent handoff needed. Run your scrape as usual.
+note: config.json pelayanan_nakes_only != false — mandiri (self-assessment) forms won't be scraped, so drift on those is invisible. Set it false for full coverage.
+[scrape selesai 2026-06-05] -> output/auto_pass_2026-06-05.json
+  2026-06-05: usable dump ✓ (auto_pass_2026-06-05.json)
+======================================================================
+ASIK TARGET DRIFT  (live forms=40, mapping forms=124)
+======================================================================
+
+NEW LIVE forms not in mapping (0) — research these:
+
+In mapping but NOT seen live (84) — removed/renamed/not-in-sample:
+  - Berat Lahir
+  - Demografi Anak
+  - Demografi Dewasa Laki-Laki
+  - Demografi Dewasa Perempuan
+  - Demografi Lansia
+  - Detail Abnormalitas - Skrining Jantung
+  - Edukasi Warna Kulit dan Tinja Bayi
+  - Faktor Risiko Gula Darah Anak
+  - Faktor Risiko HIV dan Sifilis
+  - Faktor Risiko Kanker Usus
+  - Faktor Risiko Malaria
+  - Faktor Risiko TB - Anak 1-9 tahun
+  - Faktor Risiko TB - Dewasa & Lansia
+  - Faktor Risiko dan Skrining X-Ray TB (Anak 1-9 tahun)
+  - Faktor Risiko dan Skrining X-Ray TB (Anak Kelas 1-3)
+  - Faktor Risiko dan Skrining X-Ray TB (Anak Sekolah, Dewasa & Lansia)
+  - Faktor Risiko dan Skrining X-Ray TB (Balita & Anak Pra Sekolah)
+  - Gejala Cemas Anak
+  - Gejala Cemas Remaja
+  - Gejala Depresi Anak
+  - Gejala Depresi Remaja
+  - Gizi Anak Sekolah
+  - Hasil Kremer pada Bayi Kuning
+  - Hasil Pemeriksaan SHK, G6PD, HAK
+  - Hati
+  - Kanker Leher Rahim
+  - Kesehatan Jiwa
+  - Kuesioner Gangguan Pemusatan Perhatian dan Hiperaktivitas (GPPH) - bila ada indikasi
+  - Kuesioner Masalah Perilaku dan Emosional (KMPE) - Jika terindikasi memiliki masalah perilaku dan emosi
+  - Kuesioner Pra Skrining Perkembangan (KPSP)
+  - M-CHAT - 1. Penapisan
+  - M-CHAT 2. Lanjutan jika terindikasi terlambat bicara, ada gangguan komunikasi atau interaksi sosial dan perilaku yang berulang-ulang
+  - Mobilisasi - Pemeriksaan Lanjutan (SPBB)
+  - Pemeriksaan EID
+  - Pemeriksaan Gigi - Anak
+  - Pemeriksaan Gula Darah Anak
+  - Pemeriksaan Gula Darah Lanjutan (GDP & GD 2 PP)
+  - Pemeriksaan Gula Darah Lanjutan (HbA1C)
+  - Pemeriksaan Gula Darah Remaja
+  - Pemeriksaan PJB
+
+NEW questions inside shared forms:
+  Pemeriksaan Gejala Depresi - Pemeriksaan Lanjutan:
+      + Apakah anda merasa tidak berharga seperti perasaan anda saat kini?
+      + Apakah anda sering merasa tidak berdaya?
+      + Menggambarkan perasaan pasien selama dua minggu terakhir:: Apakah anda sering me
+      + Perasaan dalam 2 Minggu terakhir : Apakah anda pada dasarnya puas dengan kehidup
+  Penurunan Kognitif - Tindak Lanjut (Mini Cog-Clock Draw):
+      + Katakan seluruh frase berikut sesuai urutannya: “Tolong gambar sebuah jam pada l
+
+Note: a full target rebuild (FRM/PPM codes + demographics) needs the
+Padanan Excel via backend/app/data/build_mapping.py — see references/asik-target.md.
+[exit=0 -> RAN/OK]  no new live forms (dump=auto_pass_2026-06-05.json, 0.0d old)
+
+==============================================================================
+COMPLETENESS MANIFEST
+==============================================================================
+step                   status         note
+audit_regions          RAN/OK         
+verify_converter       RAN/OK         
+audit_coverage         RAN/OK         
+audit_uncovered        RAN/INFO       
+live_asik_drift        RAN/OK         no new live forms (dump=auto_pass_2026-06-05.json, 0.0d old)
+
+MUST-FIX (deterministic regressions): none
+TRIAGE-REQUIRED (LLM judgment — report NEW-only vs RESEARCH_STATUS.md baseline):
+  - audit_uncovered: review top uncovered candidates for any NEW high-fill mappable gap
+
+==============================================================================
+GATE: COMPLETE — 0 MUST-FIX
+==============================================================================
+Every required step RAN with no deterministic regression. Still TRIAGE the items above and report NEW-only findings; update RESEARCH_STATUS.md if anything changed.
+
+finished=2026-06-05T12:25:29+00:00  exit=0
+ECHO THE GATE LINE VERBATIM IN YOUR REPORT. The user reads it to confirm the pass was complete and not silently shortcut.
+
+------------------------------------------------------------------------------
+SUMMARY  gate=COMPLETE — 0 MUST-FIX
+         steps: audit-regions=OK verify-converter=OK audit-coverage=OK audit-uncovered=INFO live-asik-drift=OK
+         must-fix: none   |   needs-triage: audit_uncovered
+------------------------------------------------------------------------------

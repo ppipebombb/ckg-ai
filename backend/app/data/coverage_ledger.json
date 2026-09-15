@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "updated": "2026-09-11",
+  "note": "HUMAN-EDITED ledger of known ASIK-question coverage decisions. Seeded from .claude/skills/ckg-form-research/RESEARCH_STATUS.md; each entry cites its evidence. The loop agent NEVER writes this file — a human moves a question in or out after reviewing run evidence. Matching: form_name_equals / form_name_contains / question_label_contains are casefold substring (equals = exact) matches; a question already matched by EPUS_BREADCRUMBS is 'mapped' regardless of any entry here.",
+  "entries": [
+    {
+      "id": "child-development-instruments",
+      "status": "sourceless",
+      "form_name_contains": ["kpsp", "m-chat", "gpph", "kmpe", "perkembangan"],
+      "evidence": "EPUS 'Tumbuh Kembang Anak' tab is a hollow shell (staff names + dates, zero clinical content) in 100% of records — KPSP / M-CHAT / GPPH / KMPE development forms not fillable. RESEARCH_STATUS.md 'Pediatric (under-18)', checked 2026-06-02, re-confirmed 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "immunization-antigen-history",
+      "status": "sourceless",
+      "form_name_contains": ["imunisasi"],
+      "evidence": "EPUS 'Imunisasi' tab is a visit log only (BB/PB/diagnosa) — no antigen-level history (BCG/OPV/DPT/Campak per-dose, HPV, Tetanus Status-T). RESEARCH_STATUS.md 'Pediatric' + 'Bayi baru lahir' sections, 2026-06-02 / 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "heel-prick-shk-g6pd-hak",
+      "status": "sourceless",
+      "form_name_contains": ["shk", "g6pd", "hak "],
+      "evidence": "SHK/G6PD/HAK heel-prick screening has no EPUS source. RESEARCH_STATUS.md 'Pediatric — confirmed NO source', 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "saluran-empedu",
+      "status": "sourceless",
+      "form_name_contains": ["saluran empedu"],
+      "evidence": "Biliary atresia screening (2-4 bulan) has no EPUS source. RESEARCH_STATUS.md 'Pediatric — confirmed NO source', 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "eid-and-pediatric-hiv",
+      "status": "sourceless",
+      "form_name_contains": ["eid", "hiv anak"],
+      "evidence": "Early infant diagnosis (EID) and pediatric HIV screening have no EPUS source. RESEARCH_STATUS.md 'Pediatric — confirmed NO source', 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "child-adolescent-mental-health",
+      "status": "sourceless",
+      "form_name_contains": ["gejala cemas anak", "gejala cemas remaja", "gejala depresi anak", "gejala depresi remaja"],
+      "evidence": "Child/adolescent mental-health instruments (PHQ/GAD youth variants) have no EPUS source. RESEARCH_STATUS.md 'Pediatric — confirmed NO source' (Kesehatan Jiwa Anak/Remaja), 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "talasemia-panels",
+      "status": "sourceless",
+      "form_name_contains": ["talasemia"],
+      "evidence": "Talasemia screening/confirmation panels have no EPUS source. RESEARCH_STATUS.md 'Pediatric — confirmed NO source', 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "pediatric-ear-eye",
+      "status": "sourceless",
+      "form_name_contains": ["telinga dan mata (1-2 tahun)", "telinga dan mata (anak sekolah)"],
+      "evidence": "EPUS 'PTM > Gangguan Penglihatan/Pendengaran' (the adult source) is 0% populated for under-18 — children's ear/eye is recorded via a pediatric flow EPUS does not capture. RESEARCH_STATUS.md 'Confirmed NO source (don't chase)', checked 2026-06-02.",
+      "as_of": "2026-06-02"
+    },
+    {
+      "id": "urine-lab-panels",
+      "status": "sourceless",
+      "question_label_contains": ["uacr", "kreatinin urin"],
+      "evidence": "EPUS Laboratorium tab has only serum Kreatinin (from PTM); urine Kreatinin concentration and UACR have no EPUS source. RESEARCH_STATUS.md 'known gaps' correction, 2026-06-03.",
+      "as_of": "2026-06-03"
+    },
+    {
+      "id": "hati-risk-questionnaire",
+      "status": "sourceless",
+      "form_name_equals": ["hati"],
+      "evidence": "Hati (liver) risk questionnaire has no EPUS source. RESEARCH_STATUS.md 'known gaps', 2026-05-29.",
+      "as_of": "2026-05-29"
+    },
+    {
+      "id": "frambusia-kusta-skabies",
+      "status": "sourceless",
+      "form_name_contains": ["frambusia", "kusta", "skabies"],
+      "evidence": "Frambusia / Kusta / Skabies forms are emitted as shells — no EPUS source (adult and pediatric). RESEARCH_STATUS.md 'known gaps', 2026-05-29; pediatric re-confirmed 2026-06-02.",
+      "as_of": "2026-06-02"
+    },
+    {
+      "id": "prediksi-jantung-stroke",
+      "status": "sourceless",
+      "form_name_contains": ["prediksi risiko jantung"],
+      "evidence": "Prediksi Risiko Jantung dan Stroke has no EPUS source (also in_audit=False). RESEARCH_STATUS.md 'known gaps', 2026-05-29.",
+      "as_of": "2026-05-29"
+    },
+    {
+      "id": "adult-spec-only-alternates",
+      "status": "no_target",
+      "form_name_equals": [
+        "riwayat hipertensi & diabetes",
+        "pemeriksaan tekanan darah",
+        "pemeriksaan gula darah lanjutan (gdp & gd 2 pp)",
+        "pemeriksaan gula darah lanjutan (hba1c)"
+      ],
+      "evidence": "in_audit=False spec-only alternates — the live questions are answered inside 'Tekanan Darah Dewasa Lansia' / 'Pemeriksaan Gula Darah Dewasa Lansia'. RESEARCH_STATUS.md 'verified correct (don't fix)', 2026-05-29.",
+      "as_of": "2026-05-29"
+    },
+    {
+      "id": "faktor-risiko-hiv-sifilis",
+      "status": "no_target",
+      "form_name_equals": ["faktor risiko hiv dan sifilis"],
+      "evidence": "in_audit=False, not live; asks risk-behavior, not the EPUS IMS clinical signs (which have no live target either). RESEARCH_STATUS.md 'known gaps' + ruled-out list, 2026-05-29.",
+      "as_of": "2026-05-29"
+    },
+    {
+      "id": "lead-pjb-pulse-ox",
+      "status": "lead",
+      "form_name_equals": ["pemeriksaan pjb"],
+      "evidence": "REAL EPUS module 'skriningpjb' we never scraped: GET /skriningpjb/create/{pelayanan_id} WITHOUT the XHR header returns the full form (116 KB); fields match the registry 1:1 (waktu/tangan/saturasi_tangan/kaki/saturasi_kaki/perbedaan_saturasi/interpretasi/warna). Value-storage on a FILLED bayi unverified. RESEARCH_STATUS.md 'Bayi baru lahir (PJBK + Ikterus)', 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "lead-ikterus-mtbm",
+      "status": "lead",
+      "form_name_contains": ["kuning", "warna kulit"],
+      "evidence": "Ikterus classification lives in module 'mtbm', JS-applied: raw HTML <select name='MtbmDetail[klasifikasi]'> holds the exact registry options (Tidak ada ikterus/Ikterus/Ikterus berat) with no selected attr; inline var json + setDataDetail applies the saved value. Proven capturable by JS-render or by parsing the embedded var json. Kramer test likewise. RESEARCH_STATUS.md 'Bayi baru lahir (PJBK + Ikterus)', 2026-08-24.",
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "lead-xray-tb-symptoms",
+      "status": "lead",
+      "form_name_contains": ["x-ray tb"],
+      "evidence": "Only the cough question is mapped; BB-turun / demam / keringat-malam are candidates IF EPUS Anamnesa exposes them — unverified. RESEARCH_STATUS.md 'known gaps', 2026-05-29.",
+      "as_of": "2026-05-29"
+    },
+    {
+      "id": "asik-label-drift-mini-cog",
+      "status": "asik_label_drift",
+      "form_name_contains": ["mini cog"],
+      "question_label_contains": ["katakan"],
+      "evidence": "Mapping-side double-space label typo vs live ASIK ('Mini-Cog Katakan…' class) — an ASIK-side label fix, not an EPUS hunt. RESEARCH_STATUS.md 'Still-to-fix' list, 2026-06-05.",
+      "as_of": "2026-06-05"
+    }
+  ]
+}

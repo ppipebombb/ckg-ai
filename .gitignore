@@ -1,0 +1,42 @@
+# Ignore everything under .claude EXCEPT shared project skills.
+# (.claude/* not .claude/ so the skills subdir can be re-included; __pycache__/
+#  and *.pyc rules below still exclude script caches inside the skills.)
+.claude/*
+!.claude/skills/
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.env
+.idea/
+.vscode/
+docs*
+
+# ── Runtime output (scraped data, debug dumps, screenshots) ───────────
+**/output/
+**/screenshots/
+**/config.json
+**/config.json*.bak
+**/session/
+.scraper-sessions/
+
+testing-epus-asik/
+epus-scrape-2020-2026/
+documents/
+
+# ── Local "tinker" scratch folder: archived one-off/dev/recon scripts ──────
+# Junk relocated out of the active tree (see .scratch/README.md). Repeatable
+# ops scripts and live tooling stay TRACKED — never put those here.
+.scratch/
+
+# Local-only dev seed (holds a live OpenRouter key — never commit)
+backend/scripts/seed_fresh_local.py
+# loop-agent run artifacts (generated in-container; insurance for local CLI runs)
+loop-agent/.hunt_list.md
+
+# ── One-off report tooling: scripts stay tracked, cached prod data doesn't ──
+backend/scripts/ht_dm_reports/cache/
+.prod_pg_pw
+
+.claude

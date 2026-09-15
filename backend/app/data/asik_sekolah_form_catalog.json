@@ -1,0 +1,2402 @@
+{
+  "version": 2,
+  "generated_from": "documents/Metadata Program Rutin(1).xlsx :: 'Update USEKREM Padanan Paket Od'",
+  "module": "Usia Sekolah dan Remaja",
+  "caveats": [
+    "REFERENCE ONLY — the 2026 spec (Padanan Odoo), not live ASIK. Live ASIK is ground truth; the scraper reads forms dynamically and this file is never consumed by it.",
+    "The klaster ✅-matrix is INCOMPLETE: some live Nakes forms carry no klaster mark here (see reconciliation.live_not_in_spec).",
+    "FRM codes/grouping drift vs live (e.g. NTDs split live but consolidated in spec; Hepatitis renumbered) — see reconciliation.",
+    "Question lists include server-COMPUTED interpretations and CONDITIONAL follow-ups. ASIK derives/gates these; the scraper captures the nurse-entered INPUT questions only, so a live form legitimately shows fewer fields.",
+    "Scope: the scraper captures Tipe='Layanan' (Pelayanan Nakes) only. Tipe='Skrining Mandiri' (self-report) is catalogued here for completeness but intentionally not scraped (pelayanan_nakes_only).",
+    "Other CKG programs (BBL / Balita-Prasekolah / Dewasa-Lansia) live in separate sheets and are out of CKG-Sekolah scope."
+  ],
+  "counts": {
+    "forms_total": 43,
+    "nakes_layanan": 21,
+    "skrining_mandiri": 20,
+    "untyped": 2,
+    "questions_total": 205,
+    "answer_options_total": 363,
+    "klaster_total": 28,
+    "school_klaster": 14
+  },
+  "all_klaster": [
+    "Kelas 1",
+    "Kelas 2 & 3",
+    "Kelas 4,5,6 Laki-laki",
+    "Kelas 4,5,6 Perempuan",
+    "Kelas 7 Laki-laki",
+    "Kelas 7 Perempuan",
+    "Kelas 8 Laki-laki",
+    "Kelas 8 Perempuan",
+    "Kelas 9 Laki-laki",
+    "Kelas 9 Perempuan",
+    "Kelas 10 Laki-laki",
+    "Kelas 10 Perempuan",
+    "Kelas 11&12 Laki-laki",
+    "Kelas 11&12 Perempuan",
+    "Anak 7 Tahun",
+    "Anak 8-9 Tahun",
+    "Remaja 10-12 Tahun Laki-laki",
+    "Remaja 10-12 Tahun Perempuan",
+    "Remaja 13 Tahun Laki-laki",
+    "Remaja 13 Tahun Perempuan",
+    "Remaja 14 Tahun Laki-laki",
+    "Remaja 14 Tahun Perempuan",
+    "Remaja 15 Tahun Laki-laki",
+    "Remaja 15 Tahun Perempuan",
+    "Remaja 16 Tahun Laki-laki",
+    "Remaja 16 Tahun Perempuan",
+    "Remaja 17 Tahun Laki-laki",
+    "Remaja 17 Tahun Perempuan"
+  ],
+  "school_klaster": [
+    "Kelas 1",
+    "Kelas 2 & 3",
+    "Kelas 4,5,6 Laki-laki",
+    "Kelas 4,5,6 Perempuan",
+    "Kelas 7 Laki-laki",
+    "Kelas 7 Perempuan",
+    "Kelas 8 Laki-laki",
+    "Kelas 8 Perempuan",
+    "Kelas 9 Laki-laki",
+    "Kelas 9 Perempuan",
+    "Kelas 10 Laki-laki",
+    "Kelas 10 Perempuan",
+    "Kelas 11&12 Laki-laki",
+    "Kelas 11&12 Perempuan"
+  ],
+  "reconciliation": {
+    "live_klaster": "Kelas 11 & 12 Laki-laki",
+    "live_form_count": 12,
+    "spec_nakes_for_klaster": [
+      "FRM000117",
+      "FRM000119",
+      "FRM000131",
+      "FRM000137",
+      "FRM000197",
+      "FRM000262",
+      "FRM000266"
+    ],
+    "live_not_in_spec": [
+      "FRM000128",
+      "FRM000186",
+      "FRM000199",
+      "FRM000201",
+      "FRM000257"
+    ],
+    "spec_not_in_live": []
+  },
+  "forms": {
+    "FRM000048": {
+      "layanan": "Pemeriksaan Tuberkulosis",
+      "paket": "Pemeriksaan Sputum - Tuberkulosis",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": false,
+      "questions": []
+    },
+    "FRM000097": {
+      "layanan": "Faktor Risiko Talasemia",
+      "paket": "Talasemia",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Talasemia - Transfusi Darah Rutin",
+          "label": "Apakah ada anggota keluarga kandung  Anda dinyatakan menderita Talasemia,  atau kelainan darah atau pernah menjalani transfusi darah secara rutin?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Talasemia - Pembawa Sifat",
+          "label": "Apakah ada anggota keluarga  kandung Anda dinyatakan sebagai pembawa sifat talasemia (mereka yang memiliki genetik yang tidak normal sehingga berpotensi menurunkan penyakit Talasemia)?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Faktor Risiko Talasemia",
+          "label": "Faktor Risiko Talasemia",
+          "options": []
+        }
+      ]
+    },
+    "FRM000109": {
+      "layanan": "Kesehatan Jiwa Anak",
+      "paket": "Gejala Cemas Anak",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Jiwa (Gejala Kecemasan) AA1",
+          "label": "Dalam 2 minggu terakhir, anak sering merasa khawatir atau tidak tenang, tegang, deg-degan dan gelisah terutama terhadap hal-hal negatif atau yang belum tentu terjadi.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa (Gejala Kecemasan) AA2",
+          "label": "Dalam 2 minggu terakhir, anak berpikir berlebihan dan tidak bisa mengendalikan diri, terutama terhadap hal-hal negatif atau yang belum tentu terjadi.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa (Gejala Kecemasan) AA3",
+          "label": "Dalam 2 minggu terakhir, anak sulit tidur dan berkonsentrasi terutama saat memikirkan hal-hal negatif yang belum tentu terjadi.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa Gejala Cemas Anak (Skala A)",
+          "label": "Jiwa Gejala Cemas Anak (Skala A)",
+          "options": []
+        }
+      ]
+    },
+    "FRM000110": {
+      "layanan": "Faktor Risiko Gula Darah Anak",
+      "paket": "Faktor Risiko Gula Darah Anak",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Riwayat Diabetes Mellitus Anak dan Remaja",
+          "label": "Apakah Anak Anda pernah dinyatakan diabetes atau kencing manis oleh Dokter?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Bulan Diagnosis Diabetes Balita dan Anak",
+          "label": "Sudah Berapa Bulan Anak Anda Didiagnosis Diabetes Melitus Oleh Dokter? Isi Total Bulan Sejak didiagnosis dokter hingga saat ini, misal didiagnosis 1 tahun yang lalu = 12, dst",
+          "options": []
+        },
+        {
+          "parameter": "Gejala DM Anak - Polifagi",
+          "label": "Apakah anak bapak/ibu sering merasa sangat lapar dan makan lebih banyak dari biasanya?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Gejala DM Anak - Polidipsi",
+          "label": "Apakah anak bapak/ibu sering merasa haus meskipun sudah banyak minum?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Gejala DM Anak - Penurunan BB",
+          "label": "Apakah anak bapak/ibu tetap mengalami penurunan berat badan meskipun nafsu makan meningkat?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Gejala DM Anak - Riwayat Keluarga",
+          "label": "Apakah bapak/ibu atau anggota keluarga lainnya (saudara kandung) yang pernah di diagnosis Kencing Manis oleh Dokter?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Faktor Risiko Gula Darah Anak",
+          "label": "Faktor Risiko Gula Darah",
+          "options": []
+        }
+      ]
+    },
+    "FRM000112": {
+      "layanan": "Kesehatan Jiwa Remaja",
+      "paket": "Gejala Cemas Remaja",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Jiwa (Gejala Kecemasan) RA1",
+          "label": "Dalam 2 minggu terakhir, saya sering merasa khawatir atau tidak tenang, tegang, deg-degan dan gelisah terutama terhadap hal-hal negatif atau yang belum tentu terjadi.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa (Gejala Kecemasan) RA2",
+          "label": "Dalam 2 minggu terakhir, Saya berpikir berlebihan dan tidak bisa mengendalikan diri, terutama terhadap hal-hal negatif atau yang belum tentu terjadi",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa (Gejala Kecemasan) RA3",
+          "label": "Dalam 2 minggu terakhir, Saya sulit tidur dan berkonsentrasi terutama saat memikirkan hal-hal negatif yang belum tentu terjadi",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa gejala Cemas Remaja (Skala A)",
+          "label": "Jiwa gejala Cemas Remaja (Skala A)",
+          "options": []
+        }
+      ]
+    },
+    "FRM000113": {
+      "layanan": "PARQ Anak",
+      "paket": "Kelayakan Tes Kebugaran",
+      "tipe": "Skrining Mandiri",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "ParQ1 Anak",
+          "label": "Apakah dokter pernah menyatakan bahwa Anda memiliki masalah pada tulang dan sendi seperti arthritis?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "ParQ2 Anak",
+          "label": "Apakah dokter pernah menyatakan bahwa Anda memiliki masalah pada jantung dan bahwa anda hanya bisa melakukan aktivitas fisik sesuai anjuran dokter?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "ParQ3 Anak",
+          "label": "Apakah Anda menderita asma atau pernah terserang asma saat melakukan latihan fisik?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "ParQ4 Anak",
+          "label": "Apakah Anda pernah kehilangan kesadaran, sakit kepala parah, atau pingsan?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hasil ParQ Anak",
+          "label": "Kelayakan Kebugaran Jasmani",
+          "options": []
+        }
+      ]
+    },
+    "FRM000114": {
+      "layanan": "Skrining Hepatitis SD",
+      "paket": "Faktor Risiko Hepatitis SD",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Hati - Hepatitis BC 01 tes Hep B",
+          "label": "Apakah Anda pernah menjalani tes untuk Hepatitis B dan mendapatkan hasil positif?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 02 ibu kandung",
+          "label": "Apakah Anda memiliki ibu kandung/saudara sekandung yang menderita Hepatitis B?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 04 transfusi darah",
+          "label": "Apakah Anda pernah menerima transfusi darah sebelumnya?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 05 hemodialisis",
+          "label": "Apakah Anda pernah menjalani cuci darah atau hemodialisis?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Risiko hepatitis B SD",
+          "label": "Faktor Risiko Hepatitis B",
+          "options": []
+        }
+      ]
+    },
+    "FRM000115": {
+      "layanan": "Faktor Risiko Malaria",
+      "paket": "Faktor Risiko Malaria",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Kuesioner Malaria 1 Gejala",
+          "label": "Apakah terdapat salah satu atau lebih gejala seperti; demam, sakit kepala, dan menggigil?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Kuesioner Malaria 2 Obat tidak habis",
+          "label": "Apakah pernah sakit malaria dan obat tidak habis diminum?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Kuesioner Malaria 3 Malaria Serumah",
+          "label": "Apakah ada orang sakit malaria di wilayah tempat tinggal (di rumah atau tetangga sekitar rumah)?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Kuesioner Malaria 4 Riwayat Tinggal/Perjalanan",
+          "label": "Apakah anda tinggal atau ada riwayat kedatangan dari daerah berisiko tinggi malaria selama 1 bulan terakhir?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Faktor Risiko Malaria",
+          "label": "Faktor Resiko malaria",
+          "options": []
+        }
+      ]
+    },
+    "FRM000117": {
+      "layanan": "Hasil Pemeriksaan RDT Malaria",
+      "paket": "Pemeriksaan RDT Malaria (untuk daerah endemis atau berisiko malaria)",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Hasil Pemeriksaan RDT Malaria",
+          "label": "Hasil Pemeriksaan RDT Malaria",
+          "options": [
+            "Reaktif",
+            "Non-Reaktif"
+          ]
+        }
+      ]
+    },
+    "FRM000118": {
+      "layanan": "Perilaku Merokok - Anak Sekolah",
+      "paket": "Perilaku Merokok - Anak Sekolah",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Kardiovaskular - Perilaku Merokok 01",
+          "label": "Apakah Anda merokok dalam setahun terakhir ini?",
+          "options": [
+            "Tidak",
+            "Ya"
+          ]
+        },
+        {
+          "parameter": "Kardiovaskular - Perilaku Merokok 02",
+          "label": "Jika perokok, jenis rokok apa yang dikonsumsi?",
+          "options": [
+            "Rokok konvensional (rokok putih, filter, kretek, tingwe, dll)",
+            "Rokok elektronik (vape, IQOS, dll)",
+            "Keduanya"
+          ]
+        },
+        {
+          "parameter": "Kardiovaskular - Perilaku Merokok 02a",
+          "label": "Sudah berapa tahun Anda merokok?",
+          "options": []
+        },
+        {
+          "parameter": "Kardiovaskular - Perilaku Merokok 02b",
+          "label": "Biasanya, berapa batang rokok yang Anda hisap dalam sehari?",
+          "options": []
+        },
+        {
+          "parameter": "Kardiovaskular - Perilaku Merokok 05",
+          "label": "Apakah Anda terpapar asap rokok atau menghirup asap rokok dari orang lain dalam sebulan terakhir?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Kardiovaskular - Perilaku Merokok 06",
+          "label": "Derajat Merokok (Indeks Brinkman)",
+          "options": []
+        }
+      ]
+    },
+    "FRM000119": {
+      "layanan": "Gizi Anak Sekolah",
+      "paket": "Gizi Anak Sekolah",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Berat Badan Anak Sekolah",
+          "label": "Berat Badan",
+          "options": []
+        },
+        {
+          "parameter": "Tinggi Badan Anak Sekolah (cm)",
+          "label": "Tinggi Badan",
+          "options": []
+        },
+        {
+          "parameter": "Status Gizi (IMT/U Z-score)",
+          "label": "Pilih hasil IMT/U",
+          "options": [
+            "Gizi Buruk",
+            "Gizi Kurang",
+            "Gizi Baik",
+            "Gizi Lebih",
+            "Obesitas"
+          ]
+        }
+      ]
+    },
+    "FRM000121": {
+      "layanan": "Kuesioner Tingkat Aktivitas Fisik Anak",
+      "paket": "Kuesioner Tingkat Aktivitas Fisik - Tingkat Aktivitas Fisik",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Kuesioner Aktivitas Fisik Anak1",
+          "label": "Dalam 7 hari terakhir, berapa hari Anda aktif  secara  fisik  dalam  waktu  total selama  minimal  60  menit  sehari?",
+          "options": []
+        },
+        {
+          "parameter": "Kuesioner Aktivitas Fisik Anak2",
+          "label": "Biasanya dalam satu minggu, berapa hari Anda aktif secara fisik dalam waktu total selama minimal 60 menit sehari?",
+          "options": []
+        }
+      ]
+    },
+    "FRM000122": {
+      "layanan": "Skrining Hepatitis SMP dan SMA",
+      "paket": "Faktor Risiko Hepatitis SMP dan SMA",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Hati - Hepatitis BC 01 tes Hep B",
+          "label": "Apakah Anda pernah menjalani tes untuk Hepatitis B dan mendapatkan hasil positif?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 02 ibu kandung",
+          "label": "Apakah Anda memiliki ibu kandung/saudara sekandung yang menderita Hepatitis B?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 03 hubungan berisiko",
+          "label": "Apakah Anda pernah menerima transfusi darah sebelumnya?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 04 transfusi darah",
+          "label": "Apakah Anda pernah menerima transfusi darah sebelumnya?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 05 hemodialisis",
+          "label": "Apakah Anda pernah menjalani cuci darah atau hemodialisis?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 06 narkoba suntik",
+          "label": "Apakah Anda pernah menggunakan narkoba, obat terlarang, atau bahan adiktif lainnya dengan cara disuntik?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 07 ODHIV",
+          "label": "Apakah Anda adalah orang dengan HIV (ODHIV)?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hati - Hepatitis BC 08 Hep C tidak sembuh",
+          "label": "Apakah Anda pernah mendapatkan pengobatan Hepatitis C dan tidak sembuh?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Faktor Risiko Hepatitis B",
+          "label": "Faktor Risiko Hepatitis B",
+          "options": []
+        },
+        {
+          "parameter": "Faktor Risiko Hepatitis C",
+          "label": "Faktor Risiko Hepatitis C",
+          "options": []
+        },
+        {
+          "parameter": "Faktor Risiko Hepatitis",
+          "label": "Faktor Risiko Hepatitis",
+          "options": []
+        }
+      ]
+    },
+    "FRM000123": {
+      "layanan": "Kesehatan Reproduksi Anak Sekolah Putri",
+      "paket": "Kesehatan Reproduksi Putri - Anak Sekolah",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Perempuan",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Kesehatan Reproduksi Putri - 01",
+          "label": "Apakah sudah mengalami menstruasi?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Kesehatan Reproduksi Putri - 02 (Kategori Usia Pertama Menstruasi)",
+          "label": "Pada usia berapa Anda mengalami menstruasi pertama?",
+          "options": [
+            "<8 tahun atau >16 tahun",
+            "8 tahun -16 tahun"
+          ]
+        },
+        {
+          "parameter": "Kesehatan Reproduksi Putri - 03",
+          "label": "Apakah pernah mengalami keputihan?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Kesehatan Reproduksi Putri - 04",
+          "label": "Apakah pernah mengalami gatal-gatal di kemaluan?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Risiko Kesehatan Reproduksi Putri",
+          "label": "Risiko Kesehatan Reproduksi Putri",
+          "options": []
+        }
+      ]
+    },
+    "FRM000124": {
+      "layanan": "Kesehatan Jiwa Anak",
+      "paket": "Gejala Depresi Anak",
+      "tipe": "Skrining Mandiri",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Jiwa (Gejala Depresi) AB1",
+          "label": "Dalam 2 minggu terakhir, anak sering merasa sedih atau tertekan padahal tidak ada penyebab yang jelas.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa (Gejala Depresi) AB2",
+          "label": "Dalam 2 minggu terakhir, anak tidak tertarik lagi dengan kegiatan atau hal-hal yang biasanya dia suka",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa (Gejala Depresi) AB3",
+          "label": "Dalam 2 minggu terakhir, anak merasa sering capek, sulit tidur, dan sulit fokus saat belajar atau melakukan kegiatan.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa Gejala Depresi Anak (Skala B)",
+          "label": "Jiwa Gejala Depresi Anak (Skala B)",
+          "options": []
+        }
+      ]
+    },
+    "FRM000125": {
+      "layanan": "Kesehatan Jiwa Remaja",
+      "paket": "Gejala Depresi Remaja",
+      "tipe": "Skrining Mandiri",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Jiwa (Gejala Depresi) RB1",
+          "label": "Dalam 2 minggu terakhir, saya sering merasa sedih atau tertekan padahal tidak ada penyebab yang jelas.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa (Gejala Depresi) RB2",
+          "label": "Dalam 2 minggu terakhir, saya tidak tertarik lagi dengan kegiatan atau hal-hal yang biasanya saya suka.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa (Gejala Depresi) RB3",
+          "label": "Dalam 2 minggu terakhir, saya merasa sering capek, sulit tidur, dan sulit fokus saat belajar atau melakukan kegiatan.",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Jiwa Gejala Depresi Remaja (Skala B)",
+          "label": "Jiwa Gejala Depresi Remaja (Skala B)",
+          "options": []
+        }
+      ]
+    },
+    "FRM000126": {
+      "layanan": "Kesehatan Reproduksi Anak Sekolah Putra",
+      "paket": "Kesehatan Reproduksi Putra - Anak Sekolah",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 7 Laki-laki",
+        "Kelas 8 Laki-laki",
+        "Kelas 9 Laki-laki",
+        "Kelas 10 Laki-laki",
+        "Kelas 11&12 Laki-laki",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 17 Tahun Laki-laki"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Kesehatan Reproduksi Putra - 01",
+          "label": "Apakah mengalami gatal-gatal di kemaluan (alat kelamin) atau pernah kencing berwarna kuning kental seperti susu/nanah?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Kesehatan Reproduksi Putra - 02",
+          "label": "Apakah mengalami nyeri/ tidak nyaman saat Buang Air Kecil (BAK) atau Buang Air Besar (BAB)?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Kesehatan Reproduksi Putra - 03",
+          "label": "Apakah mengalami luka di anus atau dubur?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Risiko Kesehatan Reproduksi Putra",
+          "label": "Risiko Kesehatan Reproduksi Putra",
+          "options": []
+        }
+      ]
+    },
+    "FRM000127": {
+      "layanan": "Anemia Anak Sekolah",
+      "paket": "Anemia Anak Sekolah",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 10 Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 16 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Hasil Pemeriksaan Hemoglobin Anak Sekolah",
+          "label": "Hasil Pemeriksaan Hemoglobin",
+          "options": []
+        }
+      ]
+    },
+    "FRM000128": {
+      "layanan": "Hasil Pengukuran Kebugaran Jasmani Anak",
+      "paket": "Hasil Pemeriksaan Kebugaran Jasmani Anak",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Hasil Pemeriksaan Kebugaran Jasmani Anak",
+          "label": "Hasil pemeriksaan kebugaran jasmani anak",
+          "options": [
+            "Baik sekali",
+            "Baik",
+            "Cukup",
+            "Kurang",
+            "Kurang sekali"
+          ]
+        }
+      ]
+    },
+    "FRM000129": {
+      "layanan": "Riwayat Imunisasi Rutin Anak Sekolah",
+      "paket": "Riwayat Imunisasi Rutin Anak Sekolah",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 1"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Apakah Memperoleh Imunisasi Polio Tetes dan atau Campak Rubella",
+          "label": "Apakah anak pernah memperoleh imunisasi polio tetes dan atau campak rubela saat usia 0 sd 24 bulan?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Apakah memiliki/mengingat catatan imunisasi (Buku KIA / dokumen lainnya)",
+          "label": "Apakah memiliki catatan imunisasi (buku KIA atau dokumen catatan lainnya) atau mengingat riwayat imunisasi yang diberikan pada anak?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Riwayat Imunisasi Polio Tetes (OPV) 1",
+          "label": "Apakah anak sudah mendapatkan imunisasi Polio tetes (OPV) dosis ke-1 saat bayi?",
+          "options": [
+            "Sudah",
+            "Belum"
+          ]
+        },
+        {
+          "parameter": "Riwayat Imunisasi Polio Tetes (OPV) 2",
+          "label": "Apakah anak sudah mendapatkan imunisasi Polio Tetes (OPV) dosis ke-2 saat bayi?",
+          "options": [
+            "Sudah",
+            "Belum"
+          ]
+        },
+        {
+          "parameter": "Riwayat Imunisasi Polio Tetes (OPV) 3",
+          "label": "Apakah anak sudah mendapatkan imunisasi Polio Tetes (OPV) dosis ke-3 saat bayi?",
+          "options": [
+            "Sudah",
+            "Belum"
+          ]
+        },
+        {
+          "parameter": "Riwayat Imunisasi Polio Tetes (OPV) 4",
+          "label": "Apakah anak sudah mendapatkan imunisasi Polio tetes (OPV) dosis ke-4 saat bayi?",
+          "options": [
+            "Sudah",
+            "Belum"
+          ]
+        },
+        {
+          "parameter": "Riwayat Imunisasi Campak-Rubella 1",
+          "label": "Apakah anak sudah mendapatkan imunisasi Campak-Rubela dosis ke-1 saat bayi?",
+          "options": [
+            "Sudah",
+            "Belum"
+          ]
+        },
+        {
+          "parameter": "Riwayat Imunisasi Campak-Rubela 2",
+          "label": "Apakah anak sudah mendapatkan imunisasi lanjutan Campak-Rubela dosis ke-2?",
+          "options": [
+            "Sudah",
+            "Belum"
+          ]
+        },
+        {
+          "parameter": "Status Imunisasi Rutin Anak Sekolah",
+          "label": "Status Imunisasi Rutin Anak Sekolah",
+          "options": []
+        }
+      ]
+    },
+    "FRM000130": {
+      "layanan": "Riwayat Imunisasi HPV",
+      "paket": "Riwayat Imunisasi HPV",
+      "tipe": "Skrining Mandiri",
+      "klaster": [
+        "Kelas 9 Perempuan",
+        "Remaja 15 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Riwayat Imunisasi HPV",
+          "label": "Apakah pernah mendapatkan imunisasi HPV untuk mencegah kanker leher rahim minimal satu kali?",
+          "options": [
+            "Sudah",
+            "Belum"
+          ]
+        }
+      ]
+    },
+    "FRM000131": {
+      "layanan": "Skrining Gigi - Anak",
+      "paket": "Pemeriksaan Gigi - Anak",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Gigi Karies Anak",
+          "label": "Berapa jumlah gigi karies?",
+          "options": [
+            "Tidak Ada",
+            "1.0",
+            "2.0",
+            "3.0",
+            ">3"
+          ]
+        }
+      ]
+    },
+    "FRM000133": {
+      "layanan": "Tuberkulosis - Skrining Mandiri Kelas 1-8",
+      "paket": "Skrining Tuberkulosis Anak (Kelas 1-8)",
+      "tipe": "Skrining Mandiri",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Tuberkolosis - Gejala TB 01b - Batuk (Anak)",
+          "label": "Apakah saat ini anak Anda sedang batuk- batuk lebih dari 2 minggu?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkolosis - Gejala TB 02b - BB Turun (Anak)",
+          "label": "Apakah anak Anda mengalami BB turun tanpa penyebab jelas/BB tidak naik dalam 2 bulan sebelumnya/nafsu makan turun?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkolosis - Gejala TB 03b - Demam (Anak)",
+          "label": "Apakah anak Anda mengalami demam hilang timbul tanpa sebab yang jelas lebih dari 2 minggu?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkolosis - Gejala TB 04b - Lesu (Anak)",
+          "label": "Apakah anak Anda mengalami lesu atau malaise, anak kurang aktif bermain?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Riwayat Kontak Tuberkulosis (Mandiri)",
+          "label": "Apakah Anda ada kontak dengan pasien Tuberkulosis (TBC)?",
+          "options": [
+            "Ya",
+            "Tidak",
+            "Tidak diketahui"
+          ]
+        },
+        {
+          "parameter": "Faktor Risiko Tuberkulosis Sekolah (Kelas 1-8)",
+          "label": "Risiko Tuberkulosis Anak",
+          "options": []
+        }
+      ]
+    },
+    "FRM000137": {
+      "layanan": "Skrining Telinga dan Mata - Anak Sekolah",
+      "paket": "Skrining Telinga dan Mata",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Pemeriksaan Tajam Pendengaran (Telinga Kanan) - Anak Sekolah",
+          "label": "Apakah ada gangguan pendengaran di telinga kanan?",
+          "options": [
+            "Normal",
+            "Ada indikasi gangguan pendengaran"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan Tajam Pendengaran (Telinga Kiri) - Anak Sekolah",
+          "label": "Apakah ada gangguan pendengaran di telinga kiri?",
+          "options": [
+            "Normal",
+            "Ada indikasi gangguan pendengaran"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan Tajam Pendengaran - Anak Sekolah",
+          "label": "Hasil Pemeriksaan Tajam Pendengaran",
+          "options": []
+        },
+        {
+          "parameter": "Pemeriksaan Serumen Impaksi (Telinga Kanan) - Anak Sekolah",
+          "label": "Apakah ada serumen impaksi di telinga kanan?",
+          "options": [
+            "Tidak ada serumen impaksi",
+            "Ada serumen impaksi"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan Serumen Impaksi (Telinga Kiri) - Anak Sekolah",
+          "label": "Apakah ada serumen impaksi di telinga kiri?",
+          "options": [
+            "Tidak ada serumen impaksi",
+            "Ada serumen impaksi"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan Serumen Impaksi - Anak Sekolah",
+          "label": "Hasil Pemeriksaan Serumen Impaksi",
+          "options": []
+        },
+        {
+          "parameter": "Pemeriksaan Infeksi Telinga Kanan - Anak Sekolah",
+          "label": "Apakah ada infeksi di telinga kanan?",
+          "options": [
+            "Tidak ada infeksi telinga",
+            "Ada infeksi telinga"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan Infeksi Telinga Kiri - Anak Sekolah",
+          "label": "Apakah ada infeksi di telinga kiri?",
+          "options": [
+            "Tidak ada infeksi telinga",
+            "Ada infeksi telinga"
+          ]
+        },
+        {
+          "parameter": "Hasil Infeksi Telinga - Anak Sekolah",
+          "label": "Infeksi Telinga",
+          "options": []
+        },
+        {
+          "parameter": "Pemeriksaan Mata Luar (Mata Kanan) - Anak Sekolah",
+          "label": "Apakah ditemukan selaput mata merah atau kornea keruh atau kelopak mata ada benjolan atau susah berkedip atau posisi bola mata juling atau pupil putih pada mata kanan?",
+          "options": [
+            "Normal",
+            "Curiga kelainan mata"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan Mata Luar (Mata Kiri) - Anak Sekolah",
+          "label": "Apakah ditemukan selaput mata merah atau kornea keruh atau kelopak mata ada benjolan atau susah berkedip atau posisi bola mata juling atau pupil putih pada mata kiri?",
+          "options": [
+            "Normal",
+            "Curiga kelainan mata"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan Mata Luar - Anak Sekolah",
+          "label": "Hasil Pemeriksaan Mata Luar - Anak Sekolah",
+          "options": []
+        },
+        {
+          "parameter": "Skrining Tajam Penglihatan (Mata Kanan) - Anak Sekolah",
+          "label": "Hasil skrining tajam penglihatan mata kanan",
+          "options": [
+            "Normal (visus 6/6 - 6/9)",
+            "Ada indikasi gangguan penglihatan (visus <6/9)"
+          ]
+        },
+        {
+          "parameter": "Skrining Tajam Penglihatan (Mata Kiri) - Anak Sekolah",
+          "label": "Hasil skrining tajam penglihatan mata kiri",
+          "options": [
+            "Normal (visus 6/6 - 6/9)",
+            "Ada indikasi gangguan penglihatan (visus <6/9)"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan Tajam Penglihatan Gabungan",
+          "label": "Hasil Pemeriksaan Tajam Penglihatan Gabungan",
+          "options": []
+        },
+        {
+          "parameter": "Menggunakan Kacamata - Anak Sekolah",
+          "label": "Apakah menggunakan kacamata atau tidak?",
+          "options": [
+            "Tidak",
+            "Ya"
+          ]
+        }
+      ]
+    },
+    "FRM000174": {
+      "layanan": "Tuberkulosis - Skrining Mandiri Anak 1-9 tahun",
+      "paket": "Faktor Risiko TB - Anak 1-9 tahun",
+      "tipe": "Skrining Mandiri",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Anak) - Mandiri",
+          "label": "Apakah anak Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        }
+      ]
+    },
+    "FRM000175": {
+      "layanan": "Tuberkulosis - Skrining Nakes Anak 1-9 tahun",
+      "paket": "Faktor Risiko dan Skrining X-Ray TB (Anak 1-9 tahun)",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Anak) - Nakes",
+          "label": "Apakah anak Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 02 - BB Turun (Anak)",
+          "label": "Apakah berat badan anak Anda turun tanpa penyebab jelas/ BB tidak naik dalam 2 bulan sebelumnya/ nafsu makan turun?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 03 - Demam (Anak)",
+          "label": "Apakah anak anda mengalami demam hilang timbul tanpa sebab yang jelas lebih dari 2 minggu?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 05 - Lesu (Anak)",
+          "label": "Apakah anak Anda mengalami lesu atau malaise, anak kurang aktif bermain?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 06 - Pembesaran KGB (Anak)",
+          "label": "Apakah pasien memiliki pembesaran kelenjar getah bening?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (Anak)",
+          "label": "Risiko Tuberkulosis Anak",
+          "options": []
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (Anak) lanjutan",
+          "label": "Risiko Tuberkulosis Anak",
+          "options": []
+        },
+        {
+          "parameter": "Skrining X-Ray",
+          "label": "Apakah dilakukan pemeriksaan radiografi toraks?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hasil Skrining X-Ray",
+          "label": "Hasil rontgen (foto toraks)",
+          "options": [
+            "Normal",
+            "Abnormal TBC",
+            "Abnormal non TBC"
+          ]
+        },
+        {
+          "parameter": "Faktor Risiko Tuberkulosis (Anak)",
+          "label": "Risiko Tuberkulosis Anak",
+          "options": []
+        }
+      ]
+    },
+    "FRM000176": {
+      "layanan": "Tuberkulosis - Skrining Mandiri Anak Kelas 1-3",
+      "paket": "Faktor Risiko TB - Anak Kelas 1-3",
+      "tipe": "Skrining Mandiri",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Anak Sekolah)",
+          "label": "Apakah anak Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 02 - BB Turun (Anak)",
+          "label": "Apakah berat badan anak Anda turun tanpa penyebab jelas/ BB tidak naik dalam 2 bulan sebelumnya/ nafsu makan turun?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 03 - Demam (Anak)",
+          "label": "Apakah anak anda mengalami demam hilang timbul tanpa sebab yang jelas lebih dari 2 minggu?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 05 - Lesu (Anak)",
+          "label": "Apakah anak Anda mengalami lesu atau malaise, anak kurang aktif bermain?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (CKG Sekolah Kelas 1-3)",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (CKG Sekolah Kelas 1-3) lanjutan",
+          "label": "Risiko Tuberkulosis Anak",
+          "options": []
+        },
+        {
+          "parameter": "Faktor Risiko Tuberkulosis (CKG Sekolah Kelas 1-3)",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        }
+      ]
+    },
+    "FRM000178": {
+      "layanan": "Tuberkulosis - Skrining Nakes Anak 1-9 tahun",
+      "paket": "Pemeriksaan Tuberkulosis (Anak)",
+      "tipe": null,
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Riwayat Kontak Tuberkulosis (Layanan)",
+          "label": "Apakah anda ada kontak dengan pasien Tuberkulosis (TBC)?",
+          "options": [
+            "Riwayat kontak serumah",
+            "Riwayat kontak erat",
+            "Tidak ada",
+            "Tidak diketahui"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Jenis Kontak TBC (Layanan)",
+          "label": "Apakah jeanis TBC dari pasien Tuberkulosis (TBC) yang berkontak dengan anda?",
+          "options": [
+            "Bakteriologis",
+            "Klinis"
+          ]
+        },
+        {
+          "parameter": "Metode Pemeriksaan Terduga TBC (Anak)",
+          "label": "Metode Pemeriksaan (untuk terduga TB)",
+          "options": [
+            "TCM",
+            "BTA",
+            "NPOC",
+            "Skoring Anak",
+            "Tidak dilakukan"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB TCM (Anak)",
+          "label": "Hasil Pemeriksaan TCM",
+          "options": [
+            "Mtb not detected (Neg)",
+            "Mtb detected, Rif resistance not detected (Rif Sen)",
+            "Mtb detected, Rif resistance detected (Rif Res)",
+            "MTB detected, Rif Resistance Indeterminate (Rif Indet)",
+            "Invalid",
+            "Error",
+            "No result"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB BTA (Anak)",
+          "label": "Hasil Pemeriksaan BTA",
+          "options": [
+            "Negatif",
+            "Positif"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB NPOC (Anak)",
+          "label": "Hasil Pemeriksaan NPOC",
+          "options": [
+            "Negatif",
+            "Positif"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB Skoring Anak",
+          "label": "Skoring Anak",
+          "options": [
+            "Skor <6",
+            "Skor >=6"
+          ]
+        },
+        {
+          "parameter": "TB Skoring Anak - Hasil Tes Infeksi TB",
+          "label": "Hasil Tes Infeksi TB",
+          "options": [
+            "Positif",
+            "Negatif",
+            "ko"
+          ]
+        },
+        {
+          "parameter": "Riwayat Kontak Tuberkulosis (Layanan)",
+          "label": "Apakah anda ada kontak dengan pasien Tuberkulosis (TBC)?",
+          "options": [
+            "Riwayat kontak serumah",
+            "Riwayat kontak erat",
+            "Tidak ada",
+            "Tidak diketahui"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Jenis Kontak TBC (Layanan)",
+          "label": "Apakah jeanis TBC dari pasien Tuberkulosis (TBC) yang berkontak dengan anda?",
+          "options": [
+            "Bakteriologis",
+            "Klinis"
+          ]
+        },
+        {
+          "parameter": "Metode Pemeriksaan Terduga TBC (Anak)",
+          "label": "Metode Pemeriksaan (untuk terduga TB)",
+          "options": [
+            "TCM",
+            "BTA",
+            "NPOC",
+            "Skoring Anak",
+            "Tidak dilakukan"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB TCM (Anak)",
+          "label": "Hasil Pemeriksaan TCM",
+          "options": [
+            "Mtb not detected (Neg)",
+            "Mtb detected, Rif resistance not detected (Rif Sen)",
+            "Mtb detected, Rif resistance detected (Rif Res)",
+            "MTB detected, Rif Resistance Indeterminate (Rif Indet)",
+            "Invalid",
+            "Error",
+            "No result"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB BTA (Anak)",
+          "label": "Hasil Pemeriksaan BTA",
+          "options": [
+            "Negatif",
+            "Positif"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB NPOC (Anak)",
+          "label": "Hasil Pemeriksaan NPOC",
+          "options": [
+            "Negatif",
+            "Positif"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB Skoring Anak",
+          "label": "Skoring Anak",
+          "options": [
+            "Skor <6",
+            "Skor >=6"
+          ]
+        },
+        {
+          "parameter": "TB Skoring Anak - Hasil Tes Infeksi TB",
+          "label": "Hasil Tes Infeksi TB",
+          "options": [
+            "Positif",
+            "Negatif",
+            "ko"
+          ]
+        }
+      ]
+    },
+    "FRM000179": {
+      "layanan": "Tuberkulosis - Skrining Nakes Kelas 1-3",
+      "paket": "Faktor Risiko dan Skrining X-Ray TB (Anak Kelas 1-3)",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": false,
+      "questions": []
+    },
+    "FRM000180": {
+      "layanan": "CKG Umum Dewasa usia 10-14 tahun\n\nFaktor Risiko Tuberkulosis Dewasa & Lansia",
+      "paket": "Faktor Risiko TB - Dewasa & Lansia",
+      "tipe": "Skrining Mandiri",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Dewasa) - Mandiri",
+          "label": "Apakah Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Dewasa) - Mandiri",
+          "label": "Apakah Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        }
+      ]
+    },
+    "FRM000181": {
+      "layanan": "Tuberkulosis - Skrining Mandiri Anak Kelas 4-12",
+      "paket": "Faktor Risiko TB - Anak Kelas 4-12",
+      "tipe": "Skrining Mandiri",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Dewasa Sekolah)",
+          "label": "Apakah Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 02 - BB Turun (Dewasa)",
+          "label": "Apakah berat badan Anda turun tanpa penyebab jelas/ BB tidak naik/ nafsu makan turun?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 03 - Demam (Dewasa)",
+          "label": "Apakah Anda mengalami demam hilang timbul tanpa sebab yang jelas?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 04 - Berkeringat (Dewasa)",
+          "label": "Apakah Anda mengalami berkeringat di malam hari tanpa kegiatan?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (CKG Sekolah Kelas 4-12)",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (CKG Sekolah Kelas 4-12) lanjutan",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Faktor Risiko Tuberkulosis (CKG Sekolah Kelas 4-12)",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        }
+      ]
+    },
+    "FRM000182": {
+      "layanan": "Tuberkulosis - Skrining Nakes Dewasa & Lansia",
+      "paket": "Faktor Risiko dan Skrining X-Ray TB (Dewasa & Lansia)",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Dewasa) - Nakes",
+          "label": "Apakah Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 02 - BB Turun (Dewasa)",
+          "label": "Apakah berat badan Anda turun tanpa penyebab jelas/ BB tidak naik/ nafsu makan turun?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 03 - Demam (Dewasa)",
+          "label": "Apakah Anda mengalami demam hilang timbul tanpa sebab yang jelas?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 04 - Berkeringat (Dewasa)",
+          "label": "Apakah Anda mengalami berkeringat di malam hari tanpa kegiatan?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 06 - Pembesaran KGB (Dewasa)",
+          "label": "Apakah pasien memiliki pembesaran kelenjar getah bening?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (Dewasa)",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (Dewasa) lanjutan",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Skrining X-Ray",
+          "label": "Apakah dilakukan pemeriksaan radiografi toraks?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hasil Skrining X-Ray",
+          "label": "Hasil rontgen (foto toraks)",
+          "options": [
+            "Normal",
+            "Abnormal TBC",
+            "Abnormal non TBC"
+          ]
+        },
+        {
+          "parameter": "Faktor Risiko Tuberkulosis (Dewasa)",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Dewasa) - Nakes",
+          "label": "Apakah Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 02 - BB Turun (Dewasa)",
+          "label": "Apakah berat badan Anda turun tanpa penyebab jelas/ BB tidak naik/ nafsu makan turun?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 03 - Demam (Dewasa)",
+          "label": "Apakah Anda mengalami demam hilang timbul tanpa sebab yang jelas?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 04 - Berkeringat (Dewasa)",
+          "label": "Apakah Anda mengalami berkeringat di malam hari tanpa kegiatan?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 06 - Pembesaran KGB (Dewasa)",
+          "label": "Apakah pasien memiliki pembesaran kelenjar getah bening?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (Dewasa)",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Gejala Tambahan Tuberkulosis (Dewasa) lanjutan",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Skrining X-Ray",
+          "label": "Apakah dilakukan pemeriksaan radiografi toraks?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Hasil Skrining X-Ray",
+          "label": "Hasil rontgen (foto toraks)",
+          "options": [
+            "Normal",
+            "Abnormal TBC",
+            "Abnormal non TBC"
+          ]
+        },
+        {
+          "parameter": "Faktor Risiko Tuberkulosis (Dewasa)",
+          "label": "Risiko Tuberkulosis Dewasa",
+          "options": []
+        },
+        {
+          "parameter": "Tuberkulosis - Gejala TB 01 - Batuk (Dewasa) - Mandiri",
+          "label": "Apakah Anda pernah atau sedang mengalami batuk yang tidak sembuh-sembuh?",
+          "options": [
+            "Ya, lebih dari 2 minggu",
+            "Ya, kurang dari 2 minggu",
+            "Tidak batuk"
+          ]
+        }
+      ]
+    },
+    "FRM000184": {
+      "layanan": "Tuberkulosis - Skrining Nakes Dewasa & Lansia",
+      "paket": "Pemeriksaan Tuberkulosis (Dewasa & Lansia)",
+      "tipe": null,
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Riwayat Kontak Tuberkulosis (Layanan)",
+          "label": "Apakah anda ada kontak dengan pasien Tuberkulosis (TBC)?",
+          "options": [
+            "Riwayat kontak serumah",
+            "Riwayat kontak erat",
+            "Tidak ada",
+            "Tidak diketahui"
+          ]
+        },
+        {
+          "parameter": "Tuberkulosis - Jenis Kontak TBC (Layanan)",
+          "label": "Apakah jeanis TBC dari pasien Tuberkulosis (TBC) yang berkontak dengan anda?",
+          "options": [
+            "Bakteriologis",
+            "Klinis"
+          ]
+        },
+        {
+          "parameter": "Metode Pemeriksaan Terduga TBC (Dewasa)",
+          "label": "Metode Pemeriksaan (untuk terduga TB)",
+          "options": [
+            "TCM",
+            "BTA",
+            "NPOC",
+            "Tidak dilakukan"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB TCM (Dewasa)",
+          "label": "Hasil Pemeriksaan TCM",
+          "options": [
+            "Mtb not detected (Neg)",
+            "Mtb detected, Rif resistance not detected (Rif Sen)",
+            "Mtb detected, Rif resistance detected (Rif Res)",
+            "MTB detected, Rif Resistance Indeterminate (Rif Indet)",
+            "Invalid",
+            "Error",
+            "No result"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB BTA (Dewasa)",
+          "label": "Hasil Pemeriksaan BTA",
+          "options": [
+            "Positif",
+            "Negatif"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan TB NPOC (Dewasa)",
+          "label": "Hasil Pemeriksaan NPOC",
+          "options": [
+            "Positif",
+            "Negatif"
+          ]
+        }
+      ]
+    },
+    "FRM000186": {
+      "layanan": "Pemeriksaan Kadar CO (Tatalaksana Merokok)",
+      "paket": "Pemeriksaan Kadar CO (Hanya Diisi Apabila Merokok atau Terpapar Asap Rokok)",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Kardiovaskular - Perilaku Merokok - Pemeriksaan Kadar CO Pernapasan",
+          "label": "Kadar CO Pernapasan",
+          "options": []
+        }
+      ]
+    },
+    "FRM000195": {
+      "layanan": "Pemeriksaan Gula Darah Anak",
+      "paket": "Pemeriksaan Gula Darah Anak",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Riwayat Diabetes Mellitus Anak dan Remaja",
+          "label": "Apakah Anak Anda pernah dinyatakan diabetes atau kencing manis oleh Dokter?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Bulan Diagnosis Diabetes Balita dan Anak",
+          "label": "Sudah Berapa Bulan Anak Anda Didiagnosis Diabetes Melitus Oleh Dokter? Isi Total Bulan Sejak didiagnosis dokter hingga saat ini, misal didiagnosis 1 tahun yang lalu = 12, dst",
+          "options": []
+        },
+        {
+          "parameter": "Pemeriksaan Gula Darah Sewaktu Balita, Anak, dan Remaja",
+          "label": "Isi sesuai hasil pemeriksaan. Untuk usia 3-12 dan 14 tahun serta siswa kelas 8-9 pastikan pemeriksaan & pencatatan hanya dilakukan pada anak yang “Berisiko DM” dari kuesioner mandiri. Dan lakukan pemeriksaan pada semua anak yang \"Memiliki Riwayat DM hasil diagnosis dokter\"",
+          "options": []
+        },
+        {
+          "parameter": "Hasil GDS1 Anak dan Remaja",
+          "label": "Gula Darah Anak dan Remaja",
+          "options": []
+        }
+      ]
+    },
+    "FRM000197": {
+      "layanan": "Pemeriksaan Gula Darah - Remaja",
+      "paket": "Pemeriksaan Gula Darah Remaja",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Riwayat Diabetes Mellitus Anak dan Remaja",
+          "label": "Apakah Anak Anda pernah dinyatakan diabetes atau kencing manis oleh Dokter?",
+          "options": [
+            "Ya",
+            "Tidak"
+          ]
+        },
+        {
+          "parameter": "Bulan Diagnosis Diabetes Balita dan Anak",
+          "label": "Sudah Berapa Bulan Anak Anda Didiagnosis Diabetes Melitus Oleh Dokter? Isi Total Bulan Sejak didiagnosis dokter hingga saat ini, misal didiagnosis 1 tahun yang lalu = 12, dst",
+          "options": []
+        },
+        {
+          "parameter": "Pemeriksaan Gula Darah Sewaktu Balita, Anak, dan Remaja",
+          "label": "Isi sesuai hasil pemeriksaan. Untuk usia 3-12 dan 14 tahun serta siswa kelas 8-9 pastikan pemeriksaan & pencatatan hanya dilakukan pada anak yang “Berisiko DM” dari kuesioner mandiri. Dan lakukan pemeriksaan pada semua anak yang \"Memiliki Riwayat DM hasil diagnosis dokter\"",
+          "options": []
+        },
+        {
+          "parameter": "Hasil GDS1 Anak dan Remaja",
+          "label": "Gula Darah Anak dan Remaja",
+          "options": []
+        },
+        {
+          "parameter": "Gula Darah Sewaktu Ke-2 Jika GDS ke-1 ≥ 140",
+          "label": "Gula Darah Sewaktu Kedua (GDS 2). Lakukan jika hasil GDS 1 Prediabetes (≥144-199mg/dl) atau Hiperglikemia (≥200mg/dl) dan BELUM PERNAH didiagnosis Diabetes",
+          "options": []
+        }
+      ]
+    },
+    "FRM000198": {
+      "layanan": "Layanan Penyakit Tropis Terabaikan",
+      "paket": "Pemeriksaan Penyakit Kusta",
+      "tipe": "Layanan",
+      "klaster": [
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Hasil Pemeriksaan Klinis Kusta",
+          "label": "Apakah tubuh anda ada bercak kulit putih atau merah yang tidak/kurang rasa/ kebal saat disentuh panas/dingin, tidak gatal/ tidak nyeri ?",
+          "options": [
+            "Kusta",
+            "Bukan Kusta",
+            "Meragukan",
+            "Tidak Ada"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan BTA Kusta atau observasi 3-6 bulan",
+          "label": "Hasil pemeriksaan BTA atau observasi 3-6 bulan",
+          "options": [
+            "Kusta",
+            "Bukan Kusta",
+            "Meragukan"
+          ]
+        }
+      ]
+    },
+    "FRM000199": {
+      "layanan": "Layanan Penyakit Tropis Terabaikan",
+      "paket": "Pemeriksaan Penyakit Frambusia (untuk daerah endemis atau berisiko frambusia)",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Pemeriksaan Klinis Frambusia",
+          "label": "Apakah ada papul/nodul/ulkus/krusta papiloma?",
+          "options": [
+            "Suspek frambusia",
+            "Bukan frambusia",
+            "Tidak Ada"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan RDT Treponema Frambusia",
+          "label": "Apa hasil pemeriksaan RDT Treponema Frambusia?",
+          "options": [
+            "Reaktif",
+            "Non Reaktif"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan Klinis Frambusia",
+          "label": "Apakah ada papul/nodul/ulkus/krusta papiloma?",
+          "options": [
+            "Suspek frambusia",
+            "Bukan frambusia",
+            "Tidak Ada"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan RDT Treponema Frambusia",
+          "label": "Apa hasil pemeriksaan RDT Treponema Frambusia?",
+          "options": [
+            "Reaktif",
+            "Non Reaktif"
+          ]
+        }
+      ]
+    },
+    "FRM000201": {
+      "layanan": "Layanan Penyakit Tropis Terabaikan SD",
+      "paket": "Pemeriksaan Penyakit Skabies",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Pemeriksaan Klinis Skabies",
+          "label": "Apakah ada koreng/ruam/bentol/kudis bergerombol yang gatal terutama di malam hari walaupun sudah diberi bedak atau lotion?",
+          "options": [
+            "Skabies",
+            "Meragukan",
+            "Bukan Skabies",
+            "Tidak Ada"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan Klinis Skabies",
+          "label": "Apakah ada koreng/ruam/bentol/kudis bergerombol yang gatal terutama di malam hari walaupun sudah diberi bedak atau lotion?",
+          "options": [
+            "Skabies",
+            "Meragukan",
+            "Bukan Skabies",
+            "Tidak Ada"
+          ]
+        },
+        {
+          "parameter": "Pemeriksaan Klinis Skabies",
+          "label": "Apakah ada koreng/ruam/bentol/kudis bergerombol yang gatal terutama di malam hari walaupun sudah diberi bedak atau lotion?",
+          "options": [
+            "Skabies",
+            "Meragukan",
+            "Bukan Skabies"
+          ]
+        }
+      ]
+    },
+    "FRM000257": {
+      "layanan": "Pemeriksaan Hepatitis SMP dan SMA",
+      "paket": "Pemeriksaan Hepatitis (Anak Sekolah)",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Pemeriksaan Hepatitis B",
+          "label": "Hasil Rapid Test Hepatitis B",
+          "options": []
+        },
+        {
+          "parameter": "Pemeriksaan Hepatitis C",
+          "label": "Hasil Rapid Test Hepatitis C",
+          "options": []
+        }
+      ]
+    },
+    "FRM000262": {
+      "layanan": "Layanan Penyakit Tropis Terabaikan SD",
+      "paket": "Pemeriksaan Penyakit Kusta Anak Sekolah",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan"
+      ],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Pemeriksaan Klinis Kusta",
+          "label": "Apakah tubuh anda ada bercak kulit putih atau merah yang tidak/kurang rasa/ kebal saat disentuh panas/dingin, tidak gatal/ tidak nyeri ?",
+          "options": [
+            "Kusta",
+            "Bukan Kusta",
+            "Meragukan",
+            "Tidak Ada"
+          ]
+        },
+        {
+          "parameter": "Hasil Pemeriksaan Klinis Kusta",
+          "label": "Apakah tubuh anda ada bercak kulit putih atau merah yang tidak/kurang rasa/ kebal saat disentuh panas/dingin, tidak gatal/ tidak nyeri ?",
+          "options": [
+            "Kusta",
+            "Bukan Kusta",
+            "Meragukan",
+            "Tidak Ada"
+          ]
+        }
+      ]
+    },
+    "FRM000263": {
+      "layanan": "Layanan Penyakit Tropis Terabaikan SD",
+      "paket": "Pemeriksaan Penyakit Frambusia (untuk daerah endemis atau berisiko frambusia)",
+      "tipe": "Layanan",
+      "klaster": [],
+      "live_verified": false,
+      "questions": [
+        {
+          "parameter": "Pemeriksaan Klinis Frambusia",
+          "label": "Apakah ada papul/nodul/ulkus/krusta papiloma?",
+          "options": [
+            "Suspek frambusia",
+            "Bukan frambusia",
+            "Tidak Ada"
+          ]
+        }
+      ]
+    },
+    "FRM000266": {
+      "layanan": "Tekanan Darah Anak dan Remaja",
+      "paket": "Tekanan Darah Anak dan Remaja",
+      "tipe": "Layanan",
+      "klaster": [
+        "Kelas 1",
+        "Kelas 2 & 3",
+        "Kelas 4,5,6 Laki-laki",
+        "Kelas 4,5,6 Perempuan",
+        "Kelas 7 Laki-laki",
+        "Kelas 7 Perempuan",
+        "Kelas 8 Laki-laki",
+        "Kelas 8 Perempuan",
+        "Kelas 9 Laki-laki",
+        "Kelas 9 Perempuan",
+        "Kelas 10 Laki-laki",
+        "Kelas 10 Perempuan",
+        "Kelas 11&12 Laki-laki",
+        "Kelas 11&12 Perempuan",
+        "Anak 7 Tahun",
+        "Anak 8-9 Tahun",
+        "Remaja 10-12 Tahun Laki-laki",
+        "Remaja 10-12 Tahun Perempuan",
+        "Remaja 13 Tahun Laki-laki",
+        "Remaja 13 Tahun Perempuan",
+        "Remaja 14 Tahun Laki-laki",
+        "Remaja 14 Tahun Perempuan",
+        "Remaja 15 Tahun Laki-laki",
+        "Remaja 15 Tahun Perempuan",
+        "Remaja 16 Tahun Laki-laki",
+        "Remaja 16 Tahun Perempuan",
+        "Remaja 17 Tahun Laki-laki",
+        "Remaja 17 Tahun Perempuan"
+      ],
+      "live_verified": true,
+      "questions": [
+        {
+          "parameter": "Tekanan Darah Sistol (Anak Sekolah)",
+          "label": "Tekanan Darah Sistol",
+          "options": []
+        },
+        {
+          "parameter": "Tekanan Darah Diastol (Anak Sekolah)",
+          "label": "Tekanan Darah Diastol",
+          "options": []
+        },
+        {
+          "parameter": "Tekanan Darah Anak dan Remaja",
+          "label": "Tekanan Darah Anak dan Remaja",
+          "options": []
+        }
+      ]
+    }
+  }
+}

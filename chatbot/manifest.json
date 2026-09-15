@@ -1,0 +1,19 @@
+{
+  "comment": "page key (frontend-dashboard route segment) -> ordered knowledge packs composed into the system prompt. Unknown pages fall back to 'common'.",
+  "pages": {
+    "dashboard": ["common.md", "dashboard.md"],
+    "dashboard-dm": ["common.md", "dashboard-dm.md"],
+    "patients": ["common.md", "patients.md"],
+    "school-patients": ["common.md", "school-patients.md"],
+    "hipertensi-report": ["common.md", "registri-hipertensi.md"],
+    "gap-tatalaksana": ["common.md", "gap-tatalaksana.md"],
+    "dm-report": ["common.md", "registri-diabetes-melitus.md"],
+    "lipid-report": ["common.md", "registri-dislipidemia.md"],
+    "obesitas-report": ["common.md", "registri-obesitas.md"],
+    "bayi-kuning-ikterus": ["common.md", "registri-bayi-kuning.md"],
+    "bayi-kuning-ikterus-berat": ["common.md", "registri-bayi-kuning.md"],
+    "gdp-report": ["common.md"],
+    "merge-conflicts": ["common.md"],
+    "common": ["common.md"]
+  }
+}

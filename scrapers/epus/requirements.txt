@@ -1,0 +1,8 @@
+playwright>=1.40.0
+rich>=13.0.0
+httpx>=0.28
+# Optional: only needed if you opt into EPUS_HTTP2=1 (faster on fast origins,
+# slower on throttle-prone ones — see patient_scraper._HTTP2_ENABLED). The
+# scraper degrades to HTTP/1.1 with a warning if h2 is absent.
+# h2>=4.0  ; enable for EPUS_HTTP2=1
+

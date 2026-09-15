@@ -1,0 +1,47 @@
+[project]
+name = "ckg-backend"
+version = "0.1.0"
+description = "CKG backend service"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "sqlalchemy>=2.0.36",
+    "alembic>=1.14",
+    "psycopg[binary]>=3.2",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.6",
+    "bcrypt>=4.2",
+    "pyjwt>=2.10",
+    "python-multipart>=0.0.20",
+    "email-validator>=2.2",
+    "cryptography>=43",
+    "redis>=5.0",
+    "celery>=5.4",
+    "playwright>=1.40",
+    "rich>=13",
+    "Pillow>=10",
+    "psutil>=5.9",
+    "openpyxl>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.8",
+    "pytest>=8.3",
+    "httpx>=0.28",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]

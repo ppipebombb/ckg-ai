@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* Scan the synced shared feature code so utility classes used ONLY in shared
+   components are generated. The app syncs frontend-shared/ into ./_shared (a
+   gitignored build artifact) before dev/build/typecheck, so it sits at the
+   package root — i.e. ../_shared relative to THIS css file (app/). We scan that
+   in-tree copy, NOT ../../frontend-shared: Next 16's Turbopack hard-errors on
+   @source paths that resolve OUTSIDE the project root ("leaves the filesystem
+   root"). ../_shared works the same locally and in Docker (build syncs /app/_shared). */
+@source "../_shared/**/*.{ts,tsx}";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+
+  /* Hipertensi chart series colours, TEXT variants (card titles + headline
+     percentages). The raw COLORS in frontend-shared/.../charts/theme.ts are
+     tuned for strokes/fills on a chart; as 16px text they fail WCAG AA (3.2-3.7:1
+     vs the 4.5:1 a title needs). These are the same hues at a weight that passes
+     against --card in this theme, so they must be theme-aware and cannot live in
+     the shared TS module as literals. Keep both apps' values identical. */
+  --chart-treated-text: #0e7490; /* 5.36:1 on --card */
+  --chart-tercapai-text: #15803d; /* 5.02:1 */
+  --chart-tidak-tercapai-text: #b91c1c; /* 6.47:1 */
+  --chart-tidak-berkunjung-text: #b45309; /* 5.02:1 */
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: oklch(0.556 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 0.1);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+
+  /* See :root — same hues, lightened for the dark --card. */
+  --chart-treated-text: #22d3ee; /* 9.92:1 on --card */
+  --chart-tercapai-text: #4ade80; /* 10.29:1 */
+  --chart-tidak-tercapai-text: #f87171; /* 6.48:1 */
+  --chart-tidak-berkunjung-text: #fbbf24; /* 10.74:1 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Flowing "ocean wave" used by the chatbot thinking state (chat-widget.tsx).
+   The SVG is 200% wide with two wave periods; translating by -50% loops
+   seamlessly. */
+@keyframes wave-flow {
+  to {
+    transform: translateX(-50%);
+  }
+}

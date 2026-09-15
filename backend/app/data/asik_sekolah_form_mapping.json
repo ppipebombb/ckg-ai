@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "source": "/ckg-pelayanan-sekolah",
+  "scrape_students": 6,
+  "total_forms": 12,
+  "forms": {
+    "FRM000117": {
+      "layanan": "Pemeriksaan RDT Malaria (untuk daerah endemis atau berisiko malaria)",
+      "layanan_code": "LPM000083",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Hasil Pemeriksaan RDT Malaria"
+      ]
+    },
+    "FRM000119": {
+      "layanan": "Gizi Anak Sekolah",
+      "layanan_code": "LPM000084",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Berat Badan",
+        "Tinggi Badan"
+      ]
+    },
+    "FRM000128": {
+      "layanan": "Hasil Pemeriksaan Kebugaran Jasmani Anak",
+      "layanan_code": "LPM000091",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Hasil pemeriksaan kebugaran jasmani anak"
+      ]
+    },
+    "FRM000131": {
+      "layanan": "Pemeriksaan Gigi - Anak",
+      "layanan_code": "LPM000094",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Berapa jumlah gigi karies?"
+      ]
+    },
+    "FRM000137": {
+      "layanan": "Skrining Telinga dan Mata - Anak Sekolah",
+      "layanan_code": "LPM000098",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Apakah ada gangguan pendengaran di telinga kanan?",
+        "Apakah ada gangguan pendengaran di telinga kiri?",
+        "Apakah ada serumen impaksi di telinga kanan?",
+        "Apakah ada serumen impaksi di telinga kiri?",
+        "Apakah ada infeksi di telinga kanan?",
+        "Apakah ada infeksi di telinga kiri?",
+        "Apakah ditemukan selaput mata merah atau kornea keruh atau kelopak mata ada benjolan atau susah berkedip atau posisi bola mata juling atau pupil putih pada mata kanan?",
+        "Apakah ditemukan selaput mata merah atau kornea keruh atau kelopak mata ada benjolan atau susah berkedip atau posisi bola mata juling atau pupil putih pada mata kiri?",
+        "Hasil skrining tajam penglihatan mata kanan",
+        "Hasil skrining tajam penglihatan mata kiri",
+        "Apakah menggunakan kacamata atau tidak?"
+      ]
+    },
+    "FRM000186": {
+      "layanan": "Pemeriksaan Kadar CO (Hanya Diisi Apabila Merokok atau Terpapar Asap Rokok)",
+      "layanan_code": "LPM000114",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Kadar CO Pernapasan"
+      ]
+    },
+    "FRM000197": {
+      "layanan": "Pemeriksaan Gula Darah Remaja",
+      "layanan_code": "LPM000120",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Apakah Anak Anda pernah dinyatakan diabetes atau kencing manis oleh Dokter?",
+        "Gula Darah Sewaktu (GDS)",
+        "Gula Darah Sewaktu Kedua (GDS 2). Lakukan jika hasil GDS 1 Prediabetes (≥144-199mg/dl) atau Hiperglikemia (≥200mg/dl) dan BELUM PERNAH didiagnosis Diabetes"
+      ]
+    },
+    "FRM000199": {
+      "layanan": "Pemeriksaan Penyakit Frambusia (untuk daerah endemis atau berisiko frambusia)",
+      "layanan_code": "LPM000178",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Apakah ada papul/nodul/ulkus/krusta papiloma?"
+      ]
+    },
+    "FRM000201": {
+      "layanan": "Pemeriksaan Penyakit Skabies",
+      "layanan_code": "LPM000178",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Apakah ada koreng/ruam/bentol/kudis bergerombol yang gatal terutama di malam hari walaupun sudah diberi bedak atau lotion?"
+      ]
+    },
+    "FRM000257": {
+      "layanan": "Pemeriksaan Hepatitis (Anak Sekolah)",
+      "layanan_code": "LPM000097",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Hasil Rapid Test Hepatitis B",
+        "Hasil Rapid Test Hepatitis C"
+      ]
+    },
+    "FRM000262": {
+      "layanan": "Pemeriksaan Penyakit Kusta Anak Sekolah",
+      "layanan_code": "LPM000178",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Apakah tubuh anda ada bercak kulit putih atau merah yang tidak/kurang rasa/ kebal saat disentuh panas/dingin, tidak gatal/ tidak nyeri ?"
+      ]
+    },
+    "FRM000266": {
+      "layanan": "Tekanan Darah Anak dan Remaja",
+      "layanan_code": "LPM000082",
+      "klaster": [
+        "Kelas 11 & 12 Laki-laki"
+      ],
+      "questions": [
+        "Tekanan Darah Sistol",
+        "Tekanan Darah Diastol"
+      ]
+    }
+  }
+}

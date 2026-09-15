@@ -1,0 +1,20 @@
+{
+  "base_url": "https://kotabekasi.epuskesmas.id",
+  "login_path": "/login",
+  "target_path": "/pelayanan",
+  "headless": true,
+  "slow_mo": 50,
+  "timeout": 60000,
+  "output_dir": "output",
+  "screenshot_dir": "screenshots",
+  "credentials": {
+    "email": "",
+    "password": ""
+  },
+  "filters": {
+    "status_periksa": "3",
+    "ruangan_id": "0001",
+    "limit": "100",
+    "date": ""
+  }
+}

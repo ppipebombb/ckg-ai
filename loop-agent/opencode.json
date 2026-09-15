@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "external_directory": "allow",
+    "bash": {
+      "*": "allow",
+      "*ckg-deploy*": "deny",
+      "git push --force*": "deny",
+      "git push -f*": "deny",
+      "git push origin master*": "deny",
+      "git push origin main*": "deny",
+      "gh pr merge*": "deny",
+      "*docker*postgres*": "deny",
+      "*docker*redis*": "deny"
+    }
+  }
+}

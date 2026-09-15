@@ -1,0 +1,55 @@
+# Build context is the repo root (see docker-compose `context: .`). Without this
+# file, `COPY scrapers /app/scrapers` and the frontend `COPY` would bake local
+# secrets (scraper config.json), scraped PII (output/sessions), and the whole
+# .git history into image layers. Keep only what the Dockerfiles actually COPY.
+
+# ── VCS / editor / agent tooling ──────────────────────────────────────────
+.git
+.gitignore
+.gitattributes
+.github
+.idea
+.vscode
+.claude
+.openclaude
+.DS_Store
+**/.DS_Store
+
+# ── Secrets / local env (never needed at build; injected at runtime) ───────
+**/.env
+**/.env.*
+
+# ── Python caches / virtualenvs / build output ────────────────────────────
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/.venv
+.venv
+**/.pytest_cache
+**/.ruff_cache
+**/*.egg-info
+**/dist
+**/build
+
+# ── Node / Next build artifacts (rebuilt cleanly inside the image) ─────────
+**/node_modules
+**/.next
+
+# ── Scraper runtime output: scraped PII, screenshots, saved sessions, and
+#    config.json files that contain DECRYPTED portal credentials ───────────
+**/output
+**/screenshots
+**/session
+**/config.json
+**/config.json*.bak
+.scraper-sessions
+.scraper-sessions/
+
+# ── Large local-only data dirs (gitignored; not build inputs) ──────────────
+.scratch
+documents
+testing-epus-asik
+epus-scrape-2020-2026
+
+# ── Tests (not needed in the runtime image) ───────────────────────────────
+backend/tests
